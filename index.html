@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Windblock — Wind alerts in your Google Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Windblock adds hourly wind alerts to your Google Calendar. Choose ZIP code, wind threshold, hours, and forecast model (HRRR/GFS). Free and open." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Windblock — Wind alerts in your Google Calendar" />
+  <meta property="og:description" content="Hourly wind alerts, right on your calendar. Set your ZIP, threshold, hours, and model (HRRR/GFS). Free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://windblock.app/" />
+  <meta property="og:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Windblock — Wind alerts in your Google Calendar" />
+  <meta name="twitter:description" content="Hourly wind alerts, right on your calendar." />
+  <meta name="twitter:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
+
+  <link rel="icon" href="https://windblock.app/assets/icons/windblock-128.png" />
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --fg:#eaf2fb;
+      --muted:#b7c6d9;
+      --accent:#45b3ff;      /* CTA */
+      --accent2:#8bd0ff;     /* soft accent */
+      --card:#121822;
+      --line:#223042;
+      --success:#29cc6a;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a.under{ text-decoration: underline; }
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand img{width:28px;height:28px}
+    .cta{display:inline-block;background:var(--accent);color:#001322;font-weight:700;border-radius:10px;padding:12px 16px}
+    .cta:hover{background:var(--accent2)}
+    .ghost{display:inline-block;border:1px solid var(--line);padding:10px 14px;border-radius:10px;color:var(--fg)}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:42px 0 10px}
+    .hero h1{font-size:40px;line-height:1.1;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero .badges{display:flex;gap:10px;flex-wrap:wrap}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .benefit h3{margin:6px 0 6px;font-size:18px}
+    .muted{color:var(--muted)}
+    .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .shots img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+    .steps ol{margin:0;padding-left:20px}
+    .steps li{margin:8px 0}
+    .kicker{color:var(--success);font-weight:700;font-size:13px;letter-spacing:.2px}
+    .faq details{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:12px}
+    .faq summary{cursor:pointer;font-weight:600}
+    footer{border-top:1px solid var(--line);margin-top:32px;padding:20px 0;color:var(--muted);font-size:14px}
+    footer .links{display:flex;gap:12px;flex-wrap:wrap}
+    .center{display:flex;justify-content:center}
+    .spacer{height:10px}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .grid.cols-2{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img alt="Windblock logo" src="https://windblock.app/assets/icons/windblock-128.png" />
+        <span>Windblock</span>
+      </div>
+      <nav class="links">
+        <a class="under" href="YOUR_MARKETPLACE_URL">Install</a>
+        <a class="under" href="#how">How it works</a>
+        <a class="under" href="https://windblock.app/privacy/">Privacy</a>
+        <a class="under" href="mailto:support@windblock.app">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="kicker">🪁 Wind alerts in your calendar</div>
+        <h1>See windy hours <em>right on</em> Google Calendar.</h1>
+        <p>Windblock adds 1-hour events for windy conditions at your chosen ZIP code. Pick your wind threshold, daylight hours, days ahead, and even the forecast model (HRRR/GFS/ICON/ECMWF). Events use the forecast location’s timezone.</p>
+        <div class="badges">
+          <a class="cta" href="YOUR_MARKETPLACE_URL">Install from Google Workspace Marketplace</a>
+          <a class="ghost" href="#how">How it works</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="muted" style="margin-bottom:8px;">Sample output</div>
+        <div class="grid cols-2">
+          <div>
+            <div class="muted">Calendar event</div>
+            <p style="margin:6px 0 0;"><strong>15 WNW ☀️</strong></p>
+            <p class="muted" style="margin:4px 0 0;">1–2 pm · Windblock (53705)</p>
+          </div>
+          <div>
+            <div class="muted">Description</div>
+            <p class="muted" style="margin:6px 0 0; font-size:14px;">
+              Temp: 72°F<br/>Precip: 10%<br/>Wind: 15 mph WNW (300°)<br/>Model: Auto (HRRR→GFS)<br/>Timezone: America/Chicago
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid cols-3">
+      <div class="card benefit">
+        <h3>Fast setup</h3>
+        <p class="muted">Install the add-on, set your ZIP & threshold, and click <em>Install / Update</em>. That’s it.</p>
+      </div>
+      <div class="card benefit">
+        <h3>Smart timezone</h3>
+        <p class="muted">Events are scheduled in the forecast ZIP’s local time using the API’s timezone.</p>
+      </div>
+      <div class="card benefit">
+        <h3>Model choice</h3>
+        <p class="muted">Auto (HRRR→GFS) for most users, or pick HRRR/GFS/ICON/ECMWF explicitly.</p>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section class="card">
+      <h3 style="margin:0 0 10px">Screenshots</h3>
+      <div class="shots">
+        <img alt="Sidebar settings" src="YOUR_SCREENSHOT_1_URL" />
+        <img alt="Calendar events" src="YOUR_SCREENSHOT_2_URL" />
+        <img alt="Install flow" src="YOUR_SCREENSHOT_3_URL" />
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section id="how" class="grid cols-2">
+      <div class="card steps">
+        <h3 style="margin:0 0 8px;">How it works</h3>
+        <ol>
+          <li>Install from the Marketplace and open Google Calendar.</li>
+          <li>In the Windblock sidebar, set ZIP, wind threshold (mph), hours (6am–10pm default), days ahead.</li>
+          <li>Choose a forecast model (Auto recommended).</li>
+          <li>Click <strong>Install / Update</strong> to save settings & enable auto-refresh (every 4 hours).</li>
+          <li>Click <strong>Run now</strong> to populate the next days immediately.</li>
+        </ol>
+      </div>
+      <div class="card faq">
+        <h3 style="margin:0 0 8px;">FAQ</h3>
+        <details open>
+          <summary>What data do you access?</summary>
+          <p class="muted">We create/update events in a dedicated “Windblock (ZIP)” calendar and store your settings in your Google account. See <a class="under" href="/privacy/">Privacy</a>.</p>
+        </details>
+        <div class="spacer"></div>
+        <details>
+          <summary>Which forecasts?</summary>
+          <p class="muted">Open-Meteo HRRR, GFS, ICON, and ECMWF. Auto mode prefers HRRR for short-range and falls back to GFS.</p>
+        </details>
+        <div class="spacer"></div>
+        <details>
+          <summary>Can I uninstall cleanly?</summary>
+          <p class="muted">Yes. The sidebar includes <em>Uninstall…</em> with options to disable the trigger, clear events, or delete the Windblock calendar.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div class="links">
+        <a class="under" href="YOUR_MARKETPLACE_URL">Install</a>
+        <span>•</span>
+        <a class="under" href="/privacy/">Privacy</a>
+        <span>•</span>
+        <a class="under" href="mailto:support@windblock.app">Contact support</a>
+        <span>•</span>
+        <a class="under" href="YOUR_DONATE_URL">Support ❤️ Windblock</a>
+      </div>
+      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock</div>
+    </footer>
+  </div>
+
+  <script>
+    // set current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
