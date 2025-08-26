@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>How Windblock Works — Setup Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Set up Windblock: install the Google Calendar add-on, choose your settings, and get hourly wind alerts." />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root{
+      --bg:#0b0f14; --fg:#eaf2fb; --muted:#b7c6d9; --card:#121822; --line:#223042; --accent:#45b3ff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a.under{text-decoration:underline}
+    .wrap{max-width:900px;margin:0 auto;padding:28px 18px}
+    header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    header img{width:28px;height:28px}
+    h1{font-size:28px;margin:6px 0 12px}
+    h2{font-size:18px;margin:22px 0 8px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+    ol{margin:0;padding-left:22px}
+    li{margin:10px 0}
+    .grid{display:grid;gap:12px}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    figure{margin:0}
+    figure img{width:100%;display:block;border-radius:10px;border:1px solid var(--line)}
+    figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+    .muted{color:var(--muted)}
+    footer{border-top:1px solid var(--line);margin-top:26px;padding:16px 0;color:var(--muted);font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img alt="Windblock logo" src="/assets/icons/windblock-128.png" />
+      <strong>Windblock</strong>
+    </header>
+
+    <h1>How Windblock Works</h1>
+    <p class="muted">Windblock adds hourly wind alerts to your Google Calendar based on your settings. This page shows how to install, configure, and verify it’s working.</p>
+
+    <section class="card">
+      <h2>Quick setup (5 steps)</h2>
+      <ol>
+        <li><strong>Install</strong> Windblock from the Google Workspace Marketplace and open <strong>Google Calendar</strong>.</li>
+        <li>Open the <strong>Windblock</strong> sidebar. Enter your <strong>ZIP</strong>, <strong>wind threshold (mph)</strong>, preferred <strong>hours</strong> (e.g., 6am–10pm), and <strong>days ahead</strong>.</li>
+        <li>Select a <strong>forecast model</strong> (Auto is recommended). Auto prefers HRRR for short-range and falls back to GFS for longer horizons.</li>
+        <li>Click <strong>Install / Update</strong> to save settings and enable automatic refresh (every 4 hours).</li>
+        <li>Click <strong>Run now</strong> to create events immediately. You’ll see hourly events like <em>“15 WNW ☀️”</em> in a calendar named <em>“Windblock (ZIP)”</em>.</li>
+      </ol>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:14px;">
+      <figure>
+        <img alt="Windblock sidebar settings" src="/assets/shots/sidebar.png" />
+        <figcaption>Customize ZIP, threshold, hours, model, then Install / Update or Run now.</figcaption>
+      </figure>
+      <figure>
+        <img alt="Calendar with Windblock events" src="/assets/shots/calendar-week.png" />
+        <figcaption>Hourly events appear in the forecast location’s timezone.</figcaption>
+      </figure>
+    </section>
+
+    <section class="card" style="margin-top:14px;">
+      <h2>What the events show</h2>
+      <p>Event title is <strong>“speed direction icon”</strong> (e.g., <em>15 WNW ☀️</em>). Open an event to see temperature, precipitation %, wind direction degrees, the forecast model used, and the timezone.</p>
+    </section>
+
+    <section class="card" style="margin-top:14px;">
+      <h2>Troubleshooting</h2>
+      <ul>
+        <li><strong>No events?</strong> Click <em>Run now</em>. Verify your threshold isn’t too high and hours cover daytime.</li>
+        <li><strong>Wrong hours?</strong> Check your <em>Day start</em> / <em>Day end (exclusive)</em> and that events use the forecast timezone.</li>
+        <li><strong>Too many events?</strong> Lower <em>Days ahead</em> or raise your threshold.</li>
+        <li><strong>Uninstall?</strong> Use <em>Uninstall…</em> in the sidebar (disable trigger, clear events, or delete the calendar).</li>
+      </ul>
+    </section>
+
+    <footer>
+      <div>
+        <a class="under" href="/">Home</a> ·
+        <a class="under" href="/privacy/">Privacy</a> ·
+        <a class="under" href="mailto:support@windblock.app">Contact support</a>
+      </div>
+      <div style="margin-top:6px;">&copy; <span id="y"></span> Windblock</div>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
