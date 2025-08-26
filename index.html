@@ -128,22 +128,24 @@
       align-items:center;
     }
   
-    /* image box */
+    /* image box - now ALL images use uniform sizing */
     .shots img{
       width:100%;
-      height:var(--shot-height);   /* uniform tile height */
-      object-fit:cover;            /* tidy crop for wide images */
+      height:var(--shot-height);   /* uniform tile height for ALL images */
+      object-fit:cover;            /* crop to fit for ALL images */
       border-radius:8px;
       display:block;
       background:#0e141d;          /* subtle backdrop while loading */
+      cursor:pointer;              /* indicate clickable */
+      transition:opacity 0.2s ease;
     }
   
-    /* optional portrait class for tall sidebar shot */
-    .shots img.portrait{
-      height:auto;
-      object-fit:contain;          /* don’t crop tall shot */
+    .shots img:hover{
+      opacity:0.85;                /* subtle hover feedback */
     }
 
+    /* Remove portrait-specific styling - all images now uniform */
+    
     /* 📱 Mobile tweak: stack portrait on top */
     @media (max-width: 900px) {
       .shots {
@@ -180,6 +182,49 @@
       color:var(--muted);
       text-align:center;
     }
+
+    /* ===============================
+       Modal for click-to-enlarge
+       =============================== */
+    .modal{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.9);
+      z-index:1000;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+    
+    .modal.active{
+      display:flex;
+    }
+    
+    .modal-content{
+      max-width:90vw;
+      max-height:90vh;
+      object-fit:contain;
+      border-radius:8px;
+    }
+    
+    .modal-close{
+      position:absolute;
+      top:20px;
+      right:30px;
+      color:var(--fg);
+      font-size:40px;
+      font-weight:bold;
+      cursor:pointer;
+      z-index:1001;
+    }
+    
+    .modal-close:hover{
+      color:var(--accent);
+    }
   
     /* Responsive */
     @media (max-width:900px){
@@ -187,6 +232,12 @@
       .grid.cols-3{grid-template-columns:1fr}
       .grid.cols-2{grid-template-columns:1fr}
       header{flex-direction:column;align-items:flex-start;gap:8px}
+      
+      .modal-close{
+        font-size:30px;
+        top:15px;
+        right:20px;
+      }
     }
   </style>
 </head>
@@ -209,7 +260,7 @@
       <div>
         <div class="kicker">🪁 Wind alerts in your calendar</div>
         <h1>See windy hours <em>right on</em> Google Calendar.</h1>
-        <p>Windblock protects your calendar when it’s windy. Instead of missing great conditions or constantly checking forecasts, Windblock automatically adds hourly events to Google Calendar whenever the wind meets your threshold. Set your ZIP, wind speed, hours, and forecast model — your time is protected and reserved for the best sessions.</p>
+        <p>Windblock protects your calendar when it's windy. Instead of missing great conditions or constantly checking forecasts, Windblock automatically adds hourly events to Google Calendar whenever the wind meets your threshold. Set your ZIP, wind speed, hours, and forecast model — your time is protected and reserved for the best sessions.</p>
         <div class="badges">
           <a class="cta" href="YOUR_MARKETPLACE_URL">Install from Google Workspace Marketplace</a>
           <a class="ghost" href="/how">How it works</a>
@@ -236,11 +287,11 @@
     <section class="grid cols-3">
       <div class="card benefit">
         <h3>Fast setup</h3>
-        <p class="muted">Install the add-on, set your ZIP & threshold, and click <em>Install / Update</em>. That’s it.</p>
+        <p class="muted">Install the add-on, set your ZIP & threshold, and click <em>Install / Update</em>. That's it.</p>
       </div>
       <div class="card benefit">
         <h3>Smart timezone</h3>
-        <p class="muted">Events are scheduled in the forecast ZIP’s local time using the API’s timezone.</p>
+        <p class="muted">Events are scheduled in the forecast ZIP's local time using the API's timezone.</p>
       </div>
       <div class="card benefit">
         <h3>Model choice</h3>
@@ -255,7 +306,7 @@
       <div class="shots">
     
         <figure>
-          <img class="portrait" src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar" />
+          <img src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar" />
           <figcaption>Sidebar settings</figcaption>
         </figure>
     
@@ -289,7 +340,7 @@
         <h3 style="margin:0 0 8px;">FAQ</h3>
         <details open>
           <summary>What data do you access?</summary>
-          <p class="muted">We create/update events in a dedicated “Windblock (ZIP)” calendar and store your settings in your Google account. See <a class="under" href="/privacy/">Privacy</a>.</p>
+          <p class="muted">We create/update events in a dedicated "Windblock (ZIP)" calendar and store your settings in your Google account. See <a class="under" href="/privacy/">Privacy</a>.</p>
         </details>
         <div class="spacer"></div>
         <details>
@@ -318,9 +369,49 @@
     </footer>
   </div>
 
+  <!-- Modal for enlarged screenshots -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage" alt="">
+  </div>
+
   <script>
     // set current year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Screenshot click-to-enlarge functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const images = document.querySelectorAll('.shots img');
+      
+      // Add click handler to each screenshot
+      images.forEach(function(img) {
+        img.addEventListener('click', function() {
+          modal.classList.add('active');
+          modalImg.src = this.src;
+          modalImg.alt = this.alt;
+        });
+      });
+      
+      // Close modal when clicking outside the image
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    });
+    
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
   </script>
 </body>
 </html>
