@@ -6,67 +6,238 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Windblock adds hourly wind alerts to your Google Calendar. Choose ZIP code, wind threshold, hours, and forecast model (HRRR/GFS). Free and open." />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Windblock — Wind alerts in your Google Calendar" />
+  <meta property="og:description" content="Hourly wind alerts, right on your calendar. Set your ZIP, threshold, hours, and model (HRRR/GFS). Free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://windblock.app/" />
+  <meta property="og:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Windblock — Wind alerts in your Google Calendar" />
+  <meta name="twitter:description" content="Hourly wind alerts, right on your calendar." />
+  <meta name="twitter:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
+
   <link rel="icon" href="https://windblock.app/assets/icons/windblock-128-white.png" />
 
   <style>
     :root{
-      --bg:#0b0f14; --fg:#eaf2fb; --muted:#b7c6d9;
-      --accent:#45b3ff; --accent2:#8bd0ff;
-      --card:#121822; --line:#223042; --success:#29cc6a;
-      --radius-lg:16px; --radius-md:12px;
-      --shot-h:220px;
+      --bg:#0b0f14;
+      --fg:#eaf2fb;
+      --muted:#b7c6d9;
+      --accent:#45b3ff;      /* CTA */
+      --accent2:#8bd0ff;     /* soft accent */
+      --card:#121822;
+      --line:#223042;
+      --success:#29cc6a;
+  
+      /* screenshots */
+      --shot-height:220px;   /* tweak to taste (200–260 works well) */
+      --radius-lg:16px;
+      --radius-md:12px;
     }
-
+  
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif}
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+  
     a{color:var(--accent);text-decoration:none}
     a.under{text-decoration:underline}
+  
     .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
-
+  
+    /* Header / brand */
     header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
     .brand img{width:28px;height:28px}
-
-    .cta{display:inline-block;background:var(--accent);color:#001322;font-weight:700;border-radius:10px;padding:12px 16px}
+  
+    /* Buttons */
+    .cta{
+      display:inline-block;background:var(--accent);color:#001322;
+      font-weight:700;border-radius:10px;padding:12px 16px
+    }
     .cta:hover{background:var(--accent2)}
-    .ghost{display:inline-block;border:1px solid var(--line);padding:10px 14px;border-radius:10px;color:var(--fg)}
-
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:42px 0 10px}
+    .ghost{
+      display:inline-block;border:1px solid var(--line);
+      padding:10px 14px;border-radius:10px;color:var(--fg)
+    }
+  
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1.1fr .9fr;
+      gap:28px;align-items:center;padding:42px 0 10px
+    }
     .hero h1{font-size:40px;line-height:1.1;margin:0 0 12px}
     .hero p{color:var(--muted);margin:0 0 18px}
     .hero .badges{display:flex;gap:10px;flex-wrap:wrap}
-    .kicker{color:var(--success);font-weight:700;font-size:13px}
-
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px}
+    .kicker{color:var(--success);font-weight:700;font-size:13px;letter-spacing:.2px}
+  
+    /* Cards / grids */
+    .card{
+      background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius-lg);padding:18px
+    }
     .grid{display:grid;gap:16px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     .benefit h3{margin:6px 0 6px;font-size:18px}
     .muted{color:var(--muted)}
-    .spacer{height:10px}
-
-    #how h3{margin:0 0 12px}
-    #how .tile img{width:100%;height:var(--shot-h);object-fit:cover;border-radius:12px;border:1px solid var(--line);cursor:pointer}
-    #how .tile img.portrait{height:auto;max-height:360px;object-fit:contain}
-    #how .tile h4{margin:8px 0 6px}
-    #how .tile p{margin:0;color:var(--muted)}
-
+  
+    /* Steps / FAQ */
+    .steps ol{margin:0;padding-left:20px}
+    .steps li{margin:8px 0}
     .faq details{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:var(--radius-md)}
     .faq summary{cursor:pointer;font-weight:600}
-
+  
+    /* Footer */
     footer{border-top:1px solid var(--line);margin-top:32px;padding:20px 0;color:var(--muted);font-size:14px}
     footer .links{display:flex;gap:12px;flex-wrap:wrap}
+  
+    .center{display:flex;justify-content:center}
+    .spacer{height:10px}
+  
+    /* ===============================
+       Screenshots (consistent layout)
+       Supports both:
+         - <div class="shots"><div><img/><p class="caption"></p></div>…</div>
+         - <div class="shots"><figure><img/><figcaption></figcaption></figure>…</div>
+       =============================== */
+    .shots{
+      display:grid !important;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:14px;
+    }
+  
+    /* card frame for each tile */
+    .shots > div,
+    .shots > figure{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      padding:10px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+  
+    /* image box - now ALL images use uniform sizing */
+    .shots img{
+      width:100%;
+      height:var(--shot-height);   /* uniform tile height for ALL images */
+      object-fit:cover;            /* crop to fit for ALL images */
+      border-radius:8px;
+      display:block;
+      background:#0e141d;          /* subtle backdrop while loading */
+      cursor:pointer;              /* indicate clickable */
+      transition:opacity 0.2s ease;
+    }
+  
+    .shots img:hover{
+      opacity:0.85;                /* subtle hover feedback */
+    }
 
-    /* Modal */
-    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;justify-content:center;align-items:center;padding:20px}
-    .modal.active{display:flex}
-    .modal img{max-width:90vw;max-height:90vh;border-radius:8px;object-fit:contain}
-    .modal-close{position:absolute;top:20px;right:30px;color:var(--fg);font-size:40px;font-weight:bold;cursor:pointer;z-index:1001}
-    .modal-close:hover{color:var(--accent)}
+    /* Remove portrait-specific styling - all images now uniform */
+    
+    /* 📱 Mobile tweak: stack portrait on top */
+    @media (max-width: 900px) {
+      .shots {
+        grid-template-columns: 1fr; /* one column */
+      }
 
-    @media(max-width:900px){
+      /* Portrait (first item) spans full width */
+      .shots figure:first-child img {
+        max-width: 100%;
+      }
+
+      /* Landscape shots: put them in a 2-column grid under portrait */
+      .shots {
+        grid-template-areas:
+          "portrait"
+          "land1 land2";
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .shots figure:first-child {
+        grid-area: portrait;
+        grid-column: 1 / -1;
+      }
+
+      .shots figure:nth-child(2) { grid-area: land1; }
+      .shots figure:nth-child(3) { grid-area: land2; }
+    }
+  
+    /* captions */
+    .shots .caption,
+    .shots figcaption{
+      margin-top:6px;
+      font-size:14px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* ===============================
+       Modal for click-to-enlarge
+       =============================== */
+    .modal{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.9);
+      z-index:1000;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+    
+    .modal.active{
+      display:flex;
+    }
+    
+    .modal-content{
+      max-width:90vw;
+      max-height:90vh;
+      object-fit:contain;
+      border-radius:8px;
+    }
+    
+    .modal-close{
+      position:absolute;
+      top:20px;
+      right:30px;
+      color:var(--fg);
+      font-size:40px;
+      font-weight:bold;
+      cursor:pointer;
+      z-index:1001;
+    }
+    
+    .modal-close:hover{
+      color:var(--accent);
+    }
+  
+    /* Responsive */
+    @media (max-width:900px){
       .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr}
-      .modal-close{font-size:30px;top:15px;right:20px}
+      .grid.cols-2{grid-template-columns:1fr}
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+      
+      .modal-close{
+        font-size:30px;
+        top:15px;
+        right:20px;
+      }
     }
   </style>
 </head>
@@ -79,8 +250,8 @@
       </div>
       <nav class="links">
         <a class="under" href="YOUR_MARKETPLACE_URL">Install</a>
-        <a class="under" href="#how">How it works</a>
-        <a class="under" href="/privacy/">Privacy</a>
+        <a class="under" href="/how/">How it works</a>
+        <a class="under" href="https://windblock.app/privacy/">Privacy</a>
         <a class="under" href="mailto:support@windblock.app">Contact</a>
       </nav>
     </header>
@@ -89,36 +260,98 @@
       <div>
         <div class="kicker">🪁 Wind alerts in your calendar</div>
         <h1>See windy hours <em>right on</em> Google Calendar.</h1>
-        <p>Windblock protects your calendar when it's windy. Instead of missing great conditions or constantly checking forecasts, Windblock automatically adds hourly events whenever the wind meets your threshold.</p>
+        <p>Windblock protects your calendar when it's windy. Instead of missing great conditions or constantly checking forecasts, Windblock automatically adds hourly events to Google Calendar whenever the wind meets your threshold. Set your ZIP, wind speed, hours, and forecast model — your time is protected and reserved for the best sessions.</p>
         <div class="badges">
-          <a class="cta" href="YOUR_MARKETPLACE_URL">Install from Marketplace</a>
-          <a class="ghost" href="#how">How it works</a>
+          <a class="cta" href="YOUR_MARKETPLACE_URL">Install from Google Workspace Marketplace</a>
+          <a class="ghost" href="/how">How it works</a>
         </div>
       </div>
       <div class="card">
         <div class="muted" style="margin-bottom:8px;">Sample output</div>
-        <p><strong>15 WNW ☀️</strong><br/><span class="muted">1–2 pm · Windblock (53705)</span></p>
+        <div class="grid cols-2">
+          <div>
+            <div class="muted">Calendar event</div>
+            <p style="margin:6px 0 0;"><strong>15 WNW ☀️</strong></p>
+            <p class="muted" style="margin:4px 0 0;">1–2 pm · Windblock (53705)</p>
+          </div>
+          <div>
+            <div class="muted">Description</div>
+            <p class="muted" style="margin:6px 0 0; font-size:14px;">
+              Temp: 72°F<br/>Precip: 10%<br/>Wind: 15 mph WNW (300°)<br/>Model: Auto (HRRR→GFS)<br/>Timezone: America/Chicago
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="how" class="card">
-      <h3>How it works</h3>
-      <div class="grid cols-3">
-        <div class="tile">
-          <h4>1. Open the sidebar</h4>
-          <p class="muted">Install and open Windblock in Google Calendar.</p>
-          <img class="portrait" src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings" />
-        </div>
-        <div class="tile">
-          <h4>2. Choose settings</h4>
-          <p class="muted">ZIP, threshold, hours, and forecast model.</p>
-          <img src="assets/screenshots/fullview.png" alt="Calendar events view" />
-        </div>
-        <div class="tile">
-          <h4>3. Install & Run</h4>
-          <p class="muted">Click Install / Update and Run now to populate events.</p>
-          <img src="assets/screenshots/event-details.png" alt="Event details example" />
-        </div>
+    <section class="grid cols-3">
+      <div class="card benefit">
+        <h3>Fast setup</h3>
+        <p class="muted">Install the add-on, set your ZIP & threshold, and click <em>Install / Update</em>. That's it.</p>
+      </div>
+      <div class="card benefit">
+        <h3>Smart timezone</h3>
+        <p class="muted">Events are scheduled in the forecast ZIP's local time using the API's timezone.</p>
+      </div>
+      <div class="card benefit">
+        <h3>Model choice</h3>
+        <p class="muted">Auto (HRRR→GFS) for most users, or pick HRRR/GFS/ICON/ECMWF explicitly.</p>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section class="card">
+      <h3 style="margin:0 0 10px">Screenshots</h3>
+      <div class="shots">
+    
+        <figure>
+          <img src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar" />
+          <figcaption>Sidebar settings</figcaption>
+        </figure>
+    
+        <figure>
+          <img src="assets/screenshots/fullview.png" alt="Windblock calendar events populated in Google Calendar" />
+          <figcaption>Calendar events</figcaption>
+        </figure>
+    
+        <figure>
+          <img src="assets/screenshots/event-details.png" alt="Expanded event details showing wind speed, direction, temperature, and model" />
+          <figcaption>Event details</figcaption>
+        </figure>
+    
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section id="how" class="grid cols-2">
+      <div class="card steps">
+        <h3 style="margin:0 0 8px;">How it works</h3>
+        <ol>
+          <li>Install from the Marketplace and open Google Calendar.</li>
+          <li>In the Windblock sidebar, set ZIP, wind threshold (mph), hours (6am–10pm default), days ahead.</li>
+          <li>Choose a forecast model (Auto recommended).</li>
+          <li>Click <strong>Install / Update</strong> to save settings & enable auto-refresh (every 4 hours).</li>
+          <li>Click <strong>Run now</strong> to populate the next days immediately.</li>
+        </ol>
+      </div>
+      <div class="card faq">
+        <h3 style="margin:0 0 8px;">FAQ</h3>
+        <details open>
+          <summary>What data do you access?</summary>
+          <p class="muted">We create/update events in a dedicated "Windblock (ZIP)" calendar and store your settings in your Google account. See <a class="under" href="/privacy/">Privacy</a>.</p>
+        </details>
+        <div class="spacer"></div>
+        <details>
+          <summary>Which forecasts?</summary>
+          <p class="muted">Open-Meteo HRRR, GFS, ICON, and ECMWF. Auto mode prefers HRRR for short-range and falls back to GFS.</p>
+        </details>
+        <div class="spacer"></div>
+        <details>
+          <summary>Can I uninstall cleanly?</summary>
+          <p class="muted">Yes. The sidebar includes <em>Uninstall…</em> with options to disable the trigger, clear events, or delete the Windblock calendar.</p>
+        </details>
       </div>
     </section>
 
@@ -128,34 +361,57 @@
         <span>•</span>
         <a class="under" href="/privacy/">Privacy</a>
         <span>•</span>
-        <a class="under" href="mailto:support@windblock.app">Support</a>
+        <a class="under" href="mailto:support@windblock.app">Contact support</a>
+        <span>•</span>
+        <a class="under" href="https://ko-fi.com/dvs">Support ❤️ Windblock</a>
       </div>
       <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock</div>
     </footer>
   </div>
 
-  <!-- Modal -->
-  <div id="imgModal" class="modal">
+  <!-- Modal for enlarged screenshots -->
+  <div id="imageModal" class="modal">
     <span class="modal-close" onclick="closeModal()">&times;</span>
-    <img id="modalImg" src="" alt="">
+    <img class="modal-content" id="modalImage" alt="">
   </div>
 
   <script>
+    // set current year
     document.getElementById('y').textContent = new Date().getFullYear();
-    const modal = document.getElementById('imgModal');
-    const modalImg = document.getElementById('modalImg');
-    const imgs = document.querySelectorAll('#how img');
 
-    imgs.forEach(img=>{
-      img.addEventListener('click',()=>{
-        modal.classList.add('active');
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
+    // Screenshot click-to-enlarge functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const images = document.querySelectorAll('.shots img');
+      
+      // Add click handler to each screenshot
+      images.forEach(function(img) {
+        img.addEventListener('click', function() {
+          modal.classList.add('active');
+          modalImg.src = this.src;
+          modalImg.alt = this.alt;
+        });
+      });
+      
+      // Close modal when clicking outside the image
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
       });
     });
-    function closeModal(){ modal.classList.remove('active'); }
-    modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+    
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
   </script>
 </body>
 </html>
