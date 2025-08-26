@@ -77,6 +77,53 @@
     footer .links{display:flex;gap:12px;flex-wrap:wrap}
     .center{display:flex;justify-content:center}
     .spacer{height:10px}
+
+    /* Screenshots grid */
+.shots{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:14px;
+}
+
+/* Card-like frame for each screenshot */
+.shots figure{
+  margin:0;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* Default: treat images as landscape tiles */
+.shots img{
+  width:100%;
+  height:200px;             /* consistent tile height */
+  object-fit:cover;         /* crop edges to fill neatly */
+  border-radius:8px;
+  display:block;
+}
+
+/* The tall sidebar shot: let it be taller and preserve shape */
+.shots figure.portrait img{
+  height:auto;              /* grow with intrinsic height */
+  object-fit:contain;       /* no cropping for portrait */
+}
+
+/* Captions */
+.shots figcaption{
+  margin-top:6px;
+  font-size:14px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Optional: on large screens, make the portrait span 2 rows for balance */
+@media (min-width: 900px){
+  .shots figure.portrait{ grid-row: span 2; }
+}
     @media (max-width:900px){
       .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr}
@@ -147,15 +194,18 @@
 
     <section class="card">
       <h3 style="margin:0 0 10px">Screenshots</h3>
+    
       <div class="shots">
-        <figure>
+        <figure class="portrait">
           <img src="/assets/screenshots/sidebar-settings.png" alt="Sidebar settings screenshot" />
           <figcaption class="muted">Sidebar settings</figcaption>
         </figure>
+    
         <figure>
           <img src="/assets/screenshots/fullview.png" alt="Calendar events screenshot" />
           <figcaption class="muted">Calendar events</figcaption>
         </figure>
+    
         <figure>
           <img src="/assets/screenshots/event-details.png" alt="Event details screenshot" />
           <figcaption class="muted">Event details</figcaption>
