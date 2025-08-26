@@ -55,6 +55,19 @@
     .muted{color:var(--muted)}
     .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     .shots img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+    .shots figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.shots figcaption {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
     .steps ol{margin:0;padding-left:20px}
     .steps li{margin:8px 0}
     .kicker{color:var(--success);font-weight:700;font-size:13px;letter-spacing:.2px}
@@ -135,9 +148,18 @@
     <section class="card">
       <h3 style="margin:0 0 10px">Screenshots</h3>
       <div class="shots">
-        <img alt="Sidebar settings" src="assets/screenshots/sidebar-settings.png" />
-        <img alt="Calendar events" src="assets/screenshots/fullview.png" />
-        <img alt="Event details" src="assets/screenshots/event-details.png" />
+        <figure>
+          <img src="/assets/screenshots/sidebar-settings.png" alt="Sidebar settings screenshot" />
+          <figcaption class="muted">Sidebar settings</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/screenshots/fullview.png" alt="Calendar events screenshot" />
+          <figcaption class="muted">Calendar events</figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/screenshots/event-details.png" alt="Event details screenshot" />
+          <figcaption class="muted">Event details</figcaption>
+        </figure>
       </div>
     </section>
 
