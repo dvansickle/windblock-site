@@ -118,6 +118,26 @@
   text-align:center;
 }
 
+/* ==== Screenshots layout (override) ==== */
+.card .shots{
+  display:grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:14px;
+}
+.card .shots img{
+  width:100%;
+  height:200px;        /* consistent tile height for landscape shots */
+  object-fit:cover;    /* neat crop of edges */
+  border-radius:12px;
+  border:1px solid var(--line);
+  display:block;
+}
+/* If your first image is the tall sidebar, give it a class="portrait" */
+.card .shots img.portrait{
+  height:auto;         /* keep readable */
+  object-fit:contain;  /* no cropping */
+}
+
 /* Optional: on large screens, make the portrait span 2 rows for balance */
 @media (min-width: 900px){
   .shots figure.portrait{ grid-row: span 2; }
