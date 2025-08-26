@@ -31,117 +31,157 @@
       --card:#121822;
       --line:#223042;
       --success:#29cc6a;
+  
+      /* screenshots */
+      --shot-height:220px;   /* tweak to taste (200–260 works well) */
+      --radius-lg:16px;
+      --radius-md:12px;
     }
+  
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif}
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+  
     a{color:var(--accent);text-decoration:none}
-    a.under{ text-decoration: underline; }
+    a.under{text-decoration:underline}
+  
     .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
+  
+    /* Header / brand */
     header{display:flex;justify-content:space-between;align-items:center;gap:12px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
     .brand img{width:28px;height:28px}
-    .cta{display:inline-block;background:var(--accent);color:#001322;font-weight:700;border-radius:10px;padding:12px 16px}
+  
+    /* Buttons */
+    .cta{
+      display:inline-block;background:var(--accent);color:#001322;
+      font-weight:700;border-radius:10px;padding:12px 16px
+    }
     .cta:hover{background:var(--accent2)}
-    .ghost{display:inline-block;border:1px solid var(--line);padding:10px 14px;border-radius:10px;color:var(--fg)}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:42px 0 10px}
+    .ghost{
+      display:inline-block;border:1px solid var(--line);
+      padding:10px 14px;border-radius:10px;color:var(--fg)
+    }
+  
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1.1fr .9fr;
+      gap:28px;align-items:center;padding:42px 0 10px
+    }
     .hero h1{font-size:40px;line-height:1.1;margin:0 0 12px}
     .hero p{color:var(--muted);margin:0 0 18px}
     .hero .badges{display:flex;gap:10px;flex-wrap:wrap}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .kicker{color:var(--success);font-weight:700;font-size:13px;letter-spacing:.2px}
+  
+    /* Cards / grids */
+    .card{
+      background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius-lg);padding:18px
+    }
     .grid{display:grid;gap:16px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     .benefit h3{margin:6px 0 6px;font-size:18px}
     .muted{color:var(--muted)}
-    .shots figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-}
-
-.shots figcaption {
-  margin-top: 6px;
-  font-size: 14px;
-  color: var(--muted);
-  text-align: center;
-}
+  
+    /* Steps / FAQ */
     .steps ol{margin:0;padding-left:20px}
     .steps li{margin:8px 0}
-    .kicker{color:var(--success);font-weight:700;font-size:13px;letter-spacing:.2px}
-    .faq details{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:12px}
+    .faq details{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:var(--radius-md)}
     .faq summary{cursor:pointer;font-weight:600}
+  
+    /* Footer */
     footer{border-top:1px solid var(--line);margin-top:32px;padding:20px 0;color:var(--muted);font-size:14px}
     footer .links{display:flex;gap:12px;flex-wrap:wrap}
+  
     .center{display:flex;justify-content:center}
     .spacer{height:10px}
+  
+    /* ===============================
+       Screenshots (consistent layout)
+       Supports both:
+         - <div class="shots"><div><img/><p class="caption"></p></div>…</div>
+         - <div class="shots"><figure><img/><figcaption></figcaption></figure>…</div>
+       =============================== */
+    .shots{
+      display:grid !important;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:14px;
+    }
+  
+    /* card frame for each tile */
+    .shots > div,
+    .shots > figure{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius-md);
+      padding:10px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+  
+    /* image box */
+    .shots img{
+      width:100%;
+      height:var(--shot-height);   /* uniform tile height */
+      object-fit:cover;            /* tidy crop for wide images */
+      border-radius:8px;
+      display:block;
+      background:#0e141d;          /* subtle backdrop while loading */
+    }
+  
+    /* optional portrait class for tall sidebar shot */
+    .shots img.portrait{
+      height:auto;
+      object-fit:contain;          /* don’t crop tall shot */
+    }
 
-    /* Screenshots grid */
-.shots{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap:14px;
-}
+    /* 📱 Mobile tweak: stack portrait on top */
+    @media (max-width: 900px) {
+      .shots {
+        grid-template-columns: 1fr; /* one column */
+      }
 
-/* Card-like frame for each screenshot */
-.shots figure{
-  margin:0;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
+      /* Portrait (first item) spans full width */
+      .shots figure:first-child img {
+        max-width: 100%;
+      }
 
-/* Default: treat images as landscape tiles */
-.shots img{
-  width:100%;
-  height:200px;             /* consistent tile height */
-  object-fit:cover;         /* crop edges to fill neatly */
-  border-radius:8px;
-  display:block;
-}
+      /* Landscape shots: put them in a 2-column grid under portrait */
+      .shots {
+        grid-template-areas:
+          "portrait"
+          "land1 land2";
+        grid-template-columns: 1fr 1fr;
+      }
 
-/* The tall sidebar shot: let it be taller and preserve shape */
-.shots figure.portrait img{
-  height:auto;              /* grow with intrinsic height */
-  object-fit:contain;       /* no cropping for portrait */
-}
+      .shots figure:first-child {
+        grid-area: portrait;
+        grid-column: 1 / -1;
+      }
 
-/* Captions */
-.shots figcaption{
-  margin-top:6px;
-  font-size:14px;
-  color:var(--muted);
-  text-align:center;
-}
-
-/* ==== Screenshots layout (override) ==== */
-.card .shots{
-  display:grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap:14px;
-}
-.card .shots img{
-  width:100%;
-  height:200px;        /* consistent tile height for landscape shots */
-  object-fit:cover;    /* neat crop of edges */
-  border-radius:12px;
-  border:1px solid var(--line);
-  display:block;
-}
-/* If your first image is the tall sidebar, give it a class="portrait" */
-.card .shots img.portrait{
-  height:auto;         /* keep readable */
-  object-fit:contain;  /* no cropping */
-}
-
-/* Optional: on large screens, make the portrait span 2 rows for balance */
-@media (min-width: 900px){
-  .shots figure.portrait{ grid-row: span 2; }
-}
+      .shots figure:nth-child(2) { grid-area: land1; }
+      .shots figure:nth-child(3) { grid-area: land2; }
+    }
+  
+    /* captions */
+    .shots .caption,
+    .shots figcaption{
+      margin-top:6px;
+      font-size:14px;
+      color:var(--muted);
+      text-align:center;
+    }
+  
+    /* Responsive */
     @media (max-width:900px){
       .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr}
@@ -212,22 +252,23 @@
 
     <section class="card">
       <h3 style="margin:0 0 10px">Screenshots</h3>
-    
       <div class="shots">
-        <figure class="portrait">
-          <img src="/assets/screenshots/sidebar-settings.png" alt="Sidebar settings screenshot" />
-          <figcaption class="muted">Sidebar settings</figcaption>
+    
+        <figure>
+          <img class="portrait" src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar" />
+          <figcaption>Sidebar settings</figcaption>
         </figure>
     
         <figure>
-          <img src="/assets/screenshots/fullview.png" alt="Calendar events screenshot" />
-          <figcaption class="muted">Calendar events</figcaption>
+          <img src="assets/screenshots/fullview.png" alt="Windblock calendar events populated in Google Calendar" />
+          <figcaption>Calendar events</figcaption>
         </figure>
     
         <figure>
-          <img src="/assets/screenshots/event-details.png" alt="Event details screenshot" />
-          <figcaption class="muted">Event details</figcaption>
+          <img src="assets/screenshots/event-details.png" alt="Expanded event details showing wind speed, direction, temperature, and model" />
+          <figcaption>Event details</figcaption>
         </figure>
+    
       </div>
     </section>
 
