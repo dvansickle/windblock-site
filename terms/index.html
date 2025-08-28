@@ -2,90 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Windblock — Terms of Service</title>
+  <title>Terms of Service — Windblock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Terms of Service for Windblock, the Google Calendar add-on that saves windy hours automatically." />
+
+  <!-- (Optional) Open Graph/Twitter -->
+  <meta property="og:title" content="Terms of Service — Windblock" />
+  <meta property="og:description" content="Terms of Service for Windblock, the Google Calendar add-on that saves windy hours automatically." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://windblock.app/terms/" />
+
   <link rel="icon" href="/assets/icons/windblock-128-white.png" />
+
   <style>
     :root{
-      --bg:#0b0f14; --fg:#eaf2fb; --muted:#b7c6d9; --line:#223042;
-      --card:#121822; --accent:#45b3ff;
+      --bg:#0b0f14;
+      --fg:#eaf2fb;
+      --muted:#b7c6d9;
+      --accent:#45b3ff;
+      --accent2:#8bd0ff;
+      --card:#121822;
+      --line:#223042;
+      --radius-lg:16px;
+      --radius-md:12px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
-      font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif}
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     a{color:var(--accent);text-decoration:none}
     a.under{text-decoration:underline}
-    .wrap{max-width:900px;margin:0 auto;padding:28px 20px}
-    header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-    header img{width:28px;height:28px}
-    h1{margin:6px 0 14px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
-    h2{margin:22px 0 8px;font-size:20px}
-    ul{margin:8px 0 8px 20px}
-    .muted{color:var(--muted)}
-    footer{border-top:1px solid var(--line);margin-top:26px;padding-top:14px;color:var(--muted);font-size:14px}
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
+
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand img{width:28px;height:28px}
+    nav.links{display:flex;gap:12px;flex-wrap:wrap}
+
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px}
+    .prose h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+    .prose .muted{color:var(--muted)}
+    .prose h2{font-size:18px;margin:22px 0 8px}
+    .prose p{margin:8px 0}
+    .prose ul{margin:8px 0 8px 20px}
+    .prose li{margin:6px 0}
+
+    footer{border-top:1px solid var(--line);margin-top:28px;padding:18px 0;color:var(--muted);font-size:14px}
+    footer .links{display:flex;gap:12px;flex-wrap:wrap}
+
+    @media (max-width:900px){
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
+    <!-- Header (matches privacy/home) -->
     <header>
-      <img alt="Windblock" src="/assets/icons/windblock-128-white.png" />
-      <strong>Windblock</strong>
+      <div class="brand">
+        <img alt="Windblock" src="/assets/icons/windblock-128-white.png" />
+        <span>Windblock</span>
+      </div>
+      <nav class="links">
+        <a class="under" href="/">Home</a>
+        <a class="under" href="/privacy/">Privacy</a>
+        <a class="under" href="mailto:support@windblock.app">Contact</a>
+      </nav>
     </header>
 
-    <h1>Terms of Service</h1>
-    <p class="muted">Last updated: Aug 28, 2025</p>
+    <!-- Content -->
+    <section class="card prose">
+      <h1>Terms of Service</h1>
+      <div class="muted">Last updated: Aug 28, 2025</div>
 
-    <div class="card">
-      <p><strong>Short version:</strong> Windblock adds and updates one-hour events in your Google Calendar based on public wind forecasts. It’s offered “as-is,” with no guarantees of forecast accuracy or availability. You’re always in control of your calendar. By installing or using Windblock, you agree to these terms.</p>
-    </div>
+      <div class="card" style="margin-top:12px">
+        <p><strong>Short version:</strong> Windblock adds and updates one-hour events in your Google Calendar based on public wind forecasts. It’s offered “as-is,” with no guarantees of forecast accuracy or availability. You’re always in control of your calendar. By installing or using Windblock, you agree to these terms.</p>
+      </div>
 
-    <h2>1) Who we are</h2>
-    <p>Windblock is a Google Calendar add-on that helps you reserve time when the wind looks good. It stores your settings in your Google account and uses third-party weather data to create/update events in a dedicated “Windblock (ZIP)” calendar.</p>
+      <h2>1) Who we are</h2>
+      <p>Windblock is a Google Calendar add-on that helps you reserve time when the wind looks good. It stores your settings in your Google account and uses third-party weather data to create/update events in a dedicated “Windblock (ZIP)” calendar.</p>
 
-    <h2>2) Acceptance of terms</h2>
-    <p>By installing or using Windblock, you agree to these Terms. If you do not agree, please uninstall the add-on and revoke its access in your Google Account settings.</p>
+      <h2>2) Acceptance of terms</h2>
+      <p>By installing or using Windblock, you agree to these Terms. If you do not agree, please uninstall the add-on and revoke its access in your Google Account settings.</p>
 
-    <h2>3) Using Windblock</h2>
-    <ul>
-      <li>You provide preferences (ZIP, wind threshold, hours, days ahead, model) in the sidebar.</li>
-      <li>Windblock creates/updates events in a dedicated calendar. It also removes events when the forecast drops below your threshold.</li>
-      <li>An automatic refresh runs periodically (about every 4 hours). You can trigger an immediate refresh with “Run now.”</li>
-      <li>You can uninstall at any time from the sidebar; options include disabling the trigger, clearing events, or deleting the Windblock calendar (when permitted by Google’s APIs).</li>
-    </ul>
+      <h2>3) Using Windblock</h2>
+      <ul>
+        <li>You provide preferences (ZIP, wind threshold, hours, days ahead, model) in the sidebar.</li>
+        <li>Windblock creates/updates events in a dedicated calendar. It also removes events when the forecast drops below your threshold.</li>
+        <li>An automatic refresh runs periodically (about every 4 hours). You can trigger an immediate refresh with “Run now.”</li>
+        <li>You can uninstall at any time from the sidebar; options include disabling the trigger, clearing events, or deleting the Windblock calendar (when permitted by Google’s APIs).</li>
+      </ul>
 
-    <h2>4) Permissions & privacy</h2>
-    <p>Windblock needs permission to read and write calendar events and to make external requests for weather data. We handle your information as described in our <a class="under" href="/privacy/">Privacy Policy</a>.</p>
+      <h2>4) Permissions & privacy</h2>
+      <p>Windblock needs permission to read and write calendar events and to make external requests for weather data. We handle your information as described in our <a class="under" href="/privacy/">Privacy Policy</a>.</p>
 
-    <h2>5) Forecasts & scheduling disclaimer</h2>
-    <p>Forecasts can be inaccurate or change quickly. Windblock is a convenience tool only. You remain solely responsible for your schedule and any decisions you make based on forecasts or events created by Windblock.</p>
+      <h2>5) Forecasts & scheduling disclaimer</h2>
+      <p>Forecasts can be inaccurate or change quickly. Windblock is a convenience tool only. You remain solely responsible for your schedule and any decisions you make based on forecasts or events created by Windblock.</p>
 
-    <h2>6) Availability & changes</h2>
-    <p>We may update, pause, or discontinue Windblock at any time. Features (like refresh frequency or data sources) may change without notice. We may also update these Terms; continued use after changes means you accept the updated Terms.</p>
+      <h2>6) Availability & changes</h2>
+      <p>We may update, pause, or discontinue Windblock at any time. Features (like refresh frequency or data sources) may change without notice. We may also update these Terms; continued use after changes means you accept the updated Terms.</p>
 
-    <h2>7) Fees & support</h2>
-    <p>Windblock may include an optional “Support ❤️ Windblock” link for voluntary contributions. Contributions are optional and not a purchase of features or guarantees.</p>
+      <h2>7) Fees & support</h2>
+      <p>Windblock may include an optional “Support ❤️ Windblock” link for voluntary contributions. Contributions are optional and not a purchase of features or guarantees.</p>
 
-    <h2>8) Termination</h2>
-    <p>You can stop using Windblock at any time. We may terminate or suspend access if we believe there is misuse, harm, or risk to the service or others.</p>
+      <h2>8) Termination</h2>
+      <p>You can stop using Windblock at any time. We may terminate or suspend access if we believe there is misuse, harm, or risk to the service or others.</p>
 
-    <h2>9) Warranty disclaimer</h2>
-    <p>Windblock is provided <strong>“as is” and “as available”</strong> without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement.</p>
+      <h2>9) Warranty disclaimer</h2>
+      <p>Windblock is provided <strong>“as is” and “as available”</strong> without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement.</p>
 
-    <h2>10) Limitation of liability</h2>
-    <p>To the maximum extent permitted by law, Windblock and its contributors will not be liable for any indirect, incidental, special, consequential, or exemplary damages, or for any loss of data, calendar entries, time, opportunities, or revenue, arising from or related to your use of Windblock.</p>
+      <h2>10) Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, Windblock and its contributors will not be liable for any indirect, incidental, special, consequential, or exemplary damages, or for any loss of data, calendar entries, time, opportunities, or revenue, arising from or related to your use of Windblock.</p>
 
-    <h2>11) Third-party services</h2>
-    <p>Windblock relies on third-party providers (e.g., Google services, weather APIs, ZIP geocoding). We do not control these services and are not responsible for their content, availability, or performance.</p>
+      <h2>11) Third-party services</h2>
+      <p>Windblock relies on third-party providers (e.g., Google services, weather APIs, ZIP geocoding). We do not control these services and are not responsible for their content, availability, or performance.</p>
 
-    <h2>12) Contact</h2>
-    <p>Questions about these Terms? Email <a class="under" href="mailto:support@windblock.app">support@windblock.app</a>.</p>
+      <h2>12) Contact</h2>
+      <p>Questions about these Terms? Email <a class="under" href="mailto:support@windblock.app">support@windblock.app</a>.</p>
+    </section>
 
+    <!-- Footer -->
     <footer>
-      <a class="under" href="/">Home</a> •
-      <a class="under" href="/privacy/">Privacy</a> •
-      <span>&copy; <span id="y"></span> Windblock</span>
+      <div class="links">
+        <a class="under" href="/">Home</a>
+        <span>•</span>
+        <a class="under" href="/privacy/">Privacy</a>
+        <span>•</span>
+        <a class="under" href="/terms/">Terms</a>
+        <span>•</span>
+        <a class="under" href="mailto:support@windblock.app">Contact</a>
+      </div>
+      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock</div>
     </footer>
   </div>
 
