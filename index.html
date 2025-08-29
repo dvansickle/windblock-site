@@ -152,34 +152,28 @@
       opacity:0.85;                /* subtle hover feedback */
     }
 
-    /* Remove portrait-specific styling - all images now uniform */
-    
-    /* 📱 Mobile tweak: stack portrait on top */
-    @media (max-width: 900px) {
-      .shots {
-        grid-template-columns: 1fr; /* one column */
+    /* Mobile: stack screenshots and let images size naturally */
+    @media (max-width: 820px) {
+      .shots{
+        grid-template-columns: 1fr;   /* one column stack */
+        gap: 12px;
       }
-
-      /* Portrait (first item) spans full width */
-      .shots figure:first-child img {
-        max-width: 100%;
+      .shots img{
+        height: auto;                 /* no forced height on phones */
+        max-height: none;
+        width: 100%;
+        object-fit: contain;          /* avoid aggressive cropping */
+        border-radius: 12px;
       }
-
-      /* Landscape shots: put them in a 2-column grid under portrait */
-      .shots {
-        grid-template-areas:
-          "portrait"
-          "land1 land2";
-        grid-template-columns: 1fr 1fr;
+      .shots figure,
+      .shots > div{
+        padding: 10px;                /* keep the nice card frame */
       }
-
-      .shots figure:first-child {
-        grid-area: portrait;
-        grid-column: 1 / -1;
+      .shots figcaption,
+      .shots .caption{
+        text-align: center;
+        margin-top: 6px;
       }
-
-      .shots figure:nth-child(2) { grid-area: land1; }
-      .shots figure:nth-child(3) { grid-area: land2; }
     }
   
     /* captions */
@@ -317,17 +311,17 @@
       <div class="shots">
     
         <figure>
-          <img src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar" />
+          <img src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar" loading="lazy" />
           <figcaption>Sidebar settings</figcaption>
         </figure>
     
         <figure>
-          <img src="assets/screenshots/fullview.png" alt="Windblock calendar events populated in Google Calendar" />
+          <img src="assets/screenshots/fullview.png" alt="Windblock calendar events populated in Google Calendar" loading="lazy" />
           <figcaption>Calendar events</figcaption>
         </figure>
     
         <figure>
-          <img src="assets/screenshots/event-details.png" alt="Expanded event details showing wind speed, direction, temperature, and model" />
+          <img src="assets/screenshots/event-details.png" alt="Expanded event details showing wind speed, direction, temperature, and model" loading="lazy" />
           <figcaption>Event details</figcaption>
         </figure>
     
