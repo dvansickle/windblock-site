@@ -25,7 +25,8 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Windblock — Wind alerts in your Google Calendar" />
-  <meta name="twitter:description" content="Automatically block off windy hours in Google Calendar. Adds holds when it’s windy — frees them when the forecast changes." />  <meta name="twitter:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
+  <meta name="twitter:description" content="Automatically block off windy hours in Google Calendar. Adds holds when it’s windy — frees them when the forecast changes." />
+  <meta name="twitter:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
 
   <link rel="icon" href="https://windblock.app/assets/icons/windblock-128-white.png" />
 
@@ -39,13 +40,13 @@
       --card:#121822;
       --line:#223042;
       --success:#29cc6a;
-  
+
       /* screenshots */
       --shot-height:220px;   /* tweak to taste (200–260 works well) */
       --radius-lg:16px;
       --radius-md:12px;
     }
-  
+
     *{box-sizing:border-box}
     html,body{
       margin:0;
@@ -56,17 +57,17 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
-  
+
     a{color:var(--accent);text-decoration:none}
     a.under{text-decoration:underline}
-  
+
     .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
-  
+
     /* Header / brand */
     header{display:flex;justify-content:space-between;align-items:center;gap:12px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
     .brand img{width:28px;height:28px}
-  
+
     /* Buttons */
     .cta{
       display:inline-block;background:var(--accent);color:#001322;
@@ -77,7 +78,7 @@
       display:inline-block;border:1px solid var(--line);
       padding:10px 14px;border-radius:10px;color:var(--fg)
     }
-  
+
     /* Hero */
     .hero{
       display:grid;grid-template-columns:1.1fr .9fr;
@@ -87,7 +88,7 @@
     .hero p{color:var(--muted);margin:0 0 18px}
     .hero .badges{display:flex;gap:10px;flex-wrap:wrap}
     .kicker{color:var(--success);font-weight:700;font-size:13px;letter-spacing:.2px}
-  
+
     /* Cards / grids */
     .card{
       background:var(--card);border:1px solid var(--line);
@@ -98,33 +99,28 @@
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     .benefit h3{margin:6px 0 6px;font-size:18px}
     .muted{color:var(--muted)}
-  
+
     /* Steps / FAQ */
     .steps ol{margin:0;padding-left:20px}
     .steps li{margin:8px 0}
     .faq details{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:var(--radius-md)}
     .faq summary{cursor:pointer;font-weight:600}
-  
+
     /* Footer */
     footer{border-top:1px solid var(--line);margin-top:32px;padding:20px 0;color:var(--muted);font-size:14px}
     footer .links{display:flex;gap:12px;flex-wrap:wrap}
-  
+
     .center{display:flex;justify-content:center}
     .spacer{height:10px}
-  
+
     /* ===============================
        Screenshots (consistent layout)
-       Supports both:
-         - <div class="shots"><div><img/><p class="caption"></p></div>…</div>
-         - <div class="shots"><figure><img/><figcaption></figcaption></figure>…</div>
        =============================== */
     .shots{
       display:grid !important;
       grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
       gap:14px;
     }
-  
-    /* card frame for each tile */
     .shots > div,
     .shots > figure{
       background:var(--card);
@@ -135,47 +131,37 @@
       flex-direction:column;
       align-items:center;
     }
-  
-    /* image box - now ALL images use uniform sizing */
     .shots img{
       width:100%;
-      height:var(--shot-height);   /* uniform tile height for ALL images */
-      object-fit:cover;            /* crop to fit for ALL images */
+      height:var(--shot-height);
+      object-fit:cover;
       border-radius:8px;
       display:block;
-      background:#0e141d;          /* subtle backdrop while loading */
-      cursor:pointer;              /* indicate clickable */
+      background:#0e141d;
+      cursor:pointer;
       transition:opacity 0.2s ease;
     }
-  
-    .shots img:hover{
-      opacity:0.85;                /* subtle hover feedback */
-    }
+    .shots img:hover{ opacity:0.85; }
 
     /* Mobile: stack screenshots and let images size naturally */
     @media (max-width: 820px) {
       .shots{
-        grid-template-columns: 1fr;   /* one column stack */
+        grid-template-columns: 1fr;
         gap: 12px;
       }
       .shots img{
-        height: auto;                 /* no forced height on phones */
+        height: auto;
         max-height: none;
         width: 100%;
-        object-fit: contain;          /* avoid aggressive cropping */
+        object-fit: contain;
         border-radius: 12px;
       }
       .shots figure,
-      .shots > div{
-        padding: 10px;                /* keep the nice card frame */
-      }
+      .shots > div{ padding: 10px; }
       .shots figcaption,
-      .shots .caption{
-        text-align: center;
-        margin-top: 6px;
-      }
+      .shots .caption{ text-align: center; margin-top: 6px; }
     }
-  
+
     /* captions */
     .shots .caption,
     .shots figcaption{
@@ -186,60 +172,55 @@
     }
 
     /* ===============================
-       Modal for click-to-enlarge
+       Modal (shared styles)
        =============================== */
     .modal{
       display:none;
       position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
+      top:0; left:0;
+      width:100%; height:100%;
       background:rgba(0,0,0,0.9);
       z-index:1000;
       justify-content:center;
       align-items:center;
       padding:20px;
     }
-    
-    .modal.active{
-      display:flex;
-    }
-    
+    .modal.active{ display:flex; }
+
+    /* Screenshot modal content */
     .modal-content{
       max-width:90vw;
       max-height:90vh;
       object-fit:contain;
       border-radius:8px;
     }
-    
     .modal-close{
       position:absolute;
-      top:20px;
-      right:30px;
+      top:20px; right:30px;
       color:var(--fg);
-      font-size:40px;
-      font-weight:bold;
-      cursor:pointer;
-      z-index:1001;
+      font-size:40px; font-weight:bold;
+      cursor:pointer; z-index:1001;
     }
-    
-    .modal-close:hover{
-      color:var(--accent);
+    .modal-close:hover{ color:var(--accent); }
+
+    /* Coming soon modal card */
+    .modal-card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      max-width: 480px;
+      width: 92vw;
+      padding: 18px;
+      color: var(--fg);
     }
-  
+
     /* Responsive */
     @media (max-width:900px){
       .hero{grid-template-columns:1fr}
       .grid.cols-3{grid-template-columns:1fr}
       .grid.cols-2{grid-template-columns:1fr}
       header{flex-direction:column;align-items:flex-start;gap:8px}
-      
-      .modal-close{
-        font-size:30px;
-        top:15px;
-        right:20px;
-      }
+      .modal-close{ font-size:30px; top:15px; right:20px; }
     }
   </style>
 </head>
@@ -251,7 +232,7 @@
         <span>Windblock</span>
       </div>
       <nav class="links">
-        <a class="under" href="YOUR_MARKETPLACE_URL">Install</a>
+        <a class="under js-coming-soon" href="YOUR_MARKETPLACE_URL">Install</a>
         <a class="under" href="#how">How it works</a>
         <a class="under" href="mailto:support@windblock.app">Contact</a>
       </nav>
@@ -267,7 +248,7 @@
           frees them up again when the forecast shifts. You won’t double-book or miss a session.
         </p>
         <div class="badges">
-          <a class="cta" href="YOUR_MARKETPLACE_URL">Install from Google Workspace Marketplace</a>
+          <a class="cta js-coming-soon" href="YOUR_MARKETPLACE_URL">Install from Google Workspace Marketplace</a>
           <a class="ghost" href="#how">How it works</a>
         </div>
       </div>
@@ -309,22 +290,18 @@
     <section class="card">
       <h3 style="margin:0 0 10px">Screenshots</h3>
       <div class="shots">
-    
         <figure>
           <img src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar" loading="lazy" />
           <figcaption>Sidebar settings</figcaption>
         </figure>
-    
         <figure>
           <img src="assets/screenshots/fullview.png" alt="Windblock calendar events populated in Google Calendar" loading="lazy" />
           <figcaption>Calendar events</figcaption>
         </figure>
-    
         <figure>
           <img src="assets/screenshots/event-details.png" alt="Expanded event details showing wind speed, direction, temperature, and model" loading="lazy" />
           <figcaption>Event details</figcaption>
         </figure>
-    
       </div>
     </section>
 
@@ -338,13 +315,13 @@
           <li>In the Windblock sidebar, set ZIP, wind threshold (mph), hours (6am–10pm default), days ahead.</li>
           <li>Choose a forecast model (Auto recommended).</li>
           <li>
-            Click <strong>Install / Update</strong> to save your settings and enable
+            Click <strong>Setup</strong> to save your settings and enable
             <strong>auto-refresh</strong>. Windblock will re-check the forecast and
             update your Windblock calendar automatically every <strong>4 hours</strong>.
           </li>
           <li>
-            Want it sooner? Click <strong>Run now</strong> to fetch the latest forecast
-            and refresh your calendar <strong>immediately</strong>.
+            Want it sooner? Click <strong>Refresh</strong> to fetch the latest forecast
+            and update your calendar <strong>immediately</strong>.
           </li>
         </ol>
       </div>
@@ -379,7 +356,7 @@
 
     <footer>
       <div class="links">
-        <a class="under" href="YOUR_MARKETPLACE_URL">Install</a>
+        <a class="under js-coming-soon" href="YOUR_MARKETPLACE_URL">Install</a>
         <span>•</span>
         <a class="under" href="/privacy/">Privacy</a>
         <span>•</span>
@@ -394,9 +371,22 @@
   </div>
 
   <!-- Modal for enlarged screenshots -->
-  <div id="imageModal" class="modal">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
+  <div id="imageModal" class="modal" aria-hidden="true">
+    <span class="modal-close" onclick="closeModal()" aria-label="Close">&times;</span>
     <img class="modal-content" id="modalImage" alt="">
+  </div>
+
+  <!-- Coming soon modal -->
+  <div id="comingSoonModal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-label="Coming soon">
+      <h3 style="margin:0 0 6px;">Coming soon</h3>
+      <p style="margin:0 0 12px;">
+        The Windblock Marketplace listing is in review. Check back soon or
+        <a class="under" href="mailto:support@windblock.app">email us</a>
+        and we’ll let you know the moment it’s live.
+      </p>
+      <button id="comingSoonClose" class="ghost" style="width:100%;">Got it</button>
+    </div>
   </div>
 
   <script>
@@ -408,8 +398,7 @@
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
       const images = document.querySelectorAll('.shots img');
-      
-      // Add click handler to each screenshot
+
       images.forEach(function(img) {
         img.addEventListener('click', function() {
           modal.classList.add('active');
@@ -417,25 +406,37 @@
           modalImg.alt = this.alt;
         });
       });
-      
-      // Close modal when clicking outside the image
+
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          closeModal();
-        }
+        if (e.target === modal) { closeModal(); }
       });
-      
-      // Close modal with Escape key
+
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-          closeModal();
-        }
+        if (e.key === 'Escape' && modal.classList.contains('active')) { closeModal(); }
       });
     });
-    
+
     function closeModal() {
       document.getElementById('imageModal').classList.remove('active');
     }
+
+    // Intercept "Install" until Marketplace URL is live
+    (function () {
+      const links = document.querySelectorAll('a.js-coming-soon');
+      const soonModal = document.getElementById('comingSoonModal');
+      const closeBtn = document.getElementById('comingSoonClose');
+
+      function openSoon(e){
+        // If you've replaced the placeholder, let it navigate for real
+        if (!e.currentTarget.href.includes('YOUR_MARKETPLACE_URL')) return;
+        e.preventDefault();
+        soonModal.classList.add('active');
+      }
+
+      links.forEach(a => a.addEventListener('click', openSoon));
+      closeBtn.addEventListener('click', () => soonModal.classList.remove('active'));
+      soonModal.addEventListener('click', (e) => { if (e.target === soonModal) soonModal.classList.remove('active'); });
+    })();
   </script>
 </body>
 </html>
