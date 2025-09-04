@@ -75,21 +75,22 @@
       <p>Windblock is a Google Calendar add-on that creates and updates calendar events based on public weather forecast data.
       We request only the access required to function, and processing runs within your Google account.</p>
 
-      <!-- NEW: Explicit Google Data Access section with scopes -->
-      <h2>Google Data Access (Scopes & Purposes)</h2>
+      <!-- Explicit Google Data Access section with scopes -->
+      <h2>Google Data Access (Scopes &amp; Purposes)</h2>
       <p>Windblock uses these Google permissions to operate. Each permission is limited to the stated purpose:</p>
       <ul>
         <li><code>https://www.googleapis.com/auth/calendar.addons.execute</code> — runs the add-on UI inside Google Calendar (cards, buttons, forms).</li>
         <li><code>https://www.googleapis.com/auth/script.locale</code> — localizes date/time and language for the sidebar and event text.</li>
         <li><code>https://www.googleapis.com/auth/script.external_request</code> — fetches public weather forecasts from <a class="under" href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</li>
         <li><code>https://www.googleapis.com/auth/script.storage</code> — saves your settings (ZIP, wind threshold, hours, model) in Apps Script properties within your Google account.</li>
-        <li><code>https://www.googleapis.com/auth/calendar</code> — creates, updates, and removes events in your dedicated “Windblock (ZIP)” calendar.</li>
+        <li><code>https://www.googleapis.com/auth/calendar</code> — manages calendars in your account, used specifically to create the dedicated “Windblock (ZIP)” calendar if needed.</li>
+        <li><code>https://www.googleapis.com/auth/calendar.events</code> — creates, updates, and removes events in the dedicated “Windblock (ZIP)” calendar only.</li>
         <li><code>https://www.googleapis.com/auth/script.scriptapp</code> — creates a time-based trigger that refreshes forecasts about every 4 hours.</li>
       </ul>
 
       <h2>Data We Access</h2>
       <ul>
-        <li><strong>Google Calendar:</strong> Windblock creates/updates one-hour events in a dedicated calendar named “Windblock (ZIP)”.</li>
+        <li><strong>Google Calendar:</strong> Windblock creates/updates one-hour events in a dedicated calendar named “Windblock (ZIP)”. Other calendars are not modified.</li>
         <li><strong>Settings stored in your account:</strong> ZIP code, wind threshold, hours, days ahead, and forecast model (via Apps Script properties).</li>
         <li><strong>Weather Data:</strong> Forecasts are retrieved from the public Open-Meteo API to decide when to add or remove holds.</li>
       </ul>
