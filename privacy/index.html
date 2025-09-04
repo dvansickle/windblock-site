@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <title>Privacy Policy — Windblock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Windblock privacy policy: what we access, what we don't, and how your data is handled." />
+  <meta name="description" content="Windblock privacy policy: what we access, why we access it, and how your data is handled." />
 
-  <!-- (Optional) Open Graph/Twitter -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Privacy Policy — Windblock" />
-  <meta property="og:description" content="Windblock privacy policy: what we access, what we don't, and how your data is handled." />
+  <meta property="og:description" content="Windblock privacy policy: what we access, why we access it, and how your data is handled." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://windblock.app/privacy/" />
 
@@ -16,20 +16,16 @@
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --fg:#eaf2fb;
-      --muted:#b7c6d9;
-      --accent:#45b3ff;
-      --accent2:#8bd0ff;
-      --card:#121822;
-      --line:#223042;
-      --radius-lg:16px;
-      --radius-md:12px;
+      --bg:#0b0f14; --fg:#eaf2fb; --muted:#b7c6d9; --accent:#45b3ff;
+      --accent2:#8bd0ff; --card:#121822; --line:#223042;
+      --radius-lg:16px; --radius-md:12px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    html,body{
+      margin:0;padding:0;background:var(--bg);color:var(--fg);
       font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
     a{color:var(--accent);text-decoration:none}
     a.under{text-decoration:underline}
     .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
@@ -77,30 +73,51 @@
 
       <h2>Overview</h2>
       <p>Windblock is a Google Calendar add-on that creates and updates calendar events based on public weather forecast data.
-      We respect your privacy and only request the minimum access necessary to function.</p>
+      We request only the access required to function, and processing runs within your Google account.</p>
+
+      <!-- NEW: Explicit Google Data Access section with scopes -->
+      <h2>Google Data Access (Scopes & Purposes)</h2>
+      <p>Windblock uses these Google permissions to operate. Each permission is limited to the stated purpose:</p>
+      <ul>
+        <li><code>https://www.googleapis.com/auth/calendar.addons.execute</code> — runs the add-on UI inside Google Calendar (cards, buttons, forms).</li>
+        <li><code>https://www.googleapis.com/auth/script.locale</code> — localizes date/time and language for the sidebar and event text.</li>
+        <li><code>https://www.googleapis.com/auth/script.external_request</code> — fetches public weather forecasts from <a class="under" href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</li>
+        <li><code>https://www.googleapis.com/auth/script.storage</code> — saves your settings (ZIP, wind threshold, hours, model) in Apps Script properties within your Google account.</li>
+        <li><code>https://www.googleapis.com/auth/calendar</code> — creates, updates, and removes events in your dedicated “Windblock (ZIP)” calendar.</li>
+        <li><code>https://www.googleapis.com/auth/script.scriptapp</code> — creates a time-based trigger that refreshes forecasts about every 4 hours.</li>
+      </ul>
 
       <h2>Data We Access</h2>
       <ul>
-        <li><strong>Google Calendar:</strong> Windblock creates, updates, and removes events in a dedicated calendar called “Windblock (ZIP)”.</li>
-        <li><strong>User Properties:</strong> Your settings (ZIP code, wind threshold, hours, model, etc.) are stored inside your Google account using Google Apps Script <code>UserProperties</code>.</li>
-        <li><strong>Weather Data:</strong> Forecasts are fetched from the public <a class="under" href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> API.</li>
+        <li><strong>Google Calendar:</strong> Windblock creates/updates one-hour events in a dedicated calendar named “Windblock (ZIP)”.</li>
+        <li><strong>Settings stored in your account:</strong> ZIP code, wind threshold, hours, days ahead, and forecast model (via Apps Script properties).</li>
+        <li><strong>Weather Data:</strong> Forecasts are retrieved from the public Open-Meteo API to decide when to add or remove holds.</li>
       </ul>
 
       <h2>Data We Do Not Collect</h2>
       <ul>
-        <li>We do not export your calendar data to external servers.</li>
+        <li>We do not export your calendar contents to external servers.</li>
         <li>We do not sell or share personal data with third parties.</li>
-        <li>We do not use cookies or third-party trackers on the add-on.</li>
+        <li>We do not read or modify your non-Windblock calendars.</li>
+        <li>We do not use third-party trackers in the add-on.</li>
       </ul>
 
       <h2>How Your Data Is Used</h2>
-      <p>Your settings are used solely to generate and maintain windy-hour events in your calendar. All processing runs within
-      Google’s infrastructure under your account. If a forecast changes and winds fall below your threshold, previously created
-      Windblock events may be updated or removed accordingly.</p>
+      <p>Your settings and public forecasts are used to create or update Windblock events in your calendar. When a forecast drops
+      below your threshold, the corresponding holds may be removed so your calendar reflects current conditions. Automatic refresh
+      runs via a time-based trigger roughly every 4 hours; you can also refresh manually from the sidebar.</p>
 
       <h2>Security</h2>
-      <p>Windblock runs on Google Apps Script and uses the Google Calendar API for secure access and storage. No servers
-      operated by Windblock process or retain your data outside of Google’s environment.</p>
+      <p>Windblock runs on Google Apps Script and uses Google Calendar APIs under your Google account. We do not operate external
+      servers that store your calendar data; settings are stored within Apps Script properties associated with your account.</p>
+
+      <h2>Uninstall</h2>
+      <p>You can uninstall from the sidebar at any time. Options include disabling the trigger, clearing events, or deleting the
+      Windblock calendar (subject to Google API limitations). You may also revoke access from your Google Account permissions.</p>
+
+      <h2>Changes</h2>
+      <p>If we update this policy, we will change the effective date above. Continued use of Windblock after changes means you
+      accept the updated policy.</p>
 
       <h2>Contact</h2>
       <p>Questions? Email <a class="under" href="mailto:support@windblock.app">support@windblock.app</a>.</p>
@@ -122,7 +139,6 @@
   </div>
 
   <script>
-    // current year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
