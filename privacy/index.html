@@ -82,16 +82,16 @@
         <li><code>https://www.googleapis.com/auth/calendar.addons.execute</code> — runs the add-on UI inside Google Calendar (cards, buttons, forms).</li>
         <li><code>https://www.googleapis.com/auth/script.locale</code> — localizes date/time and language for the sidebar and event text.</li>
         <li><code>https://www.googleapis.com/auth/script.external_request</code> — fetches public weather forecasts from <a class="under" href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</li>
-        <li><code>https://www.googleapis.com/auth/script.storage</code> — saves your settings (ZIP, wind threshold, hours, model) in Apps Script properties within your Google account.</li>
-        <li><code>https://www.googleapis.com/auth/calendar</code> — manages calendars in your account, used specifically to create the dedicated “Windblock (ZIP)” calendar if needed.</li>
+        <li><code>https://www.googleapis.com/auth/script.storage</code> — stores your settings (ZIP, wind threshold, hours, model) in Apps Script properties within your Google account. On the consent screen this appears as “View and manage data associated with the application.”</li>
+        <li><code>https://www.googleapis.com/auth/calendar</code> — creates, updates, and removes 1-hour events in a dedicated calendar named “Windblock (ZIP)”, and creates that calendar if it doesn’t exist. Other calendars are not read or modified.</li>
         <li><code>https://www.googleapis.com/auth/script.scriptapp</code> — creates a time-based trigger that refreshes forecasts about every 4 hours.</li>
       </ul>
 
       <h2>Data We Access</h2>
       <ul>
-        <li><strong>Google Calendar:</strong> Windblock creates/updates one-hour events in a dedicated calendar named “Windblock (ZIP)”. Other calendars are not modified.</li>
+        <li><strong>Google Calendar:</strong> Windblock creates/updates one-hour events only in the dedicated “Windblock (ZIP)” calendar. Other calendars are not modified.</li>
         <li><strong>Settings stored in your account:</strong> ZIP code, wind threshold, hours, days ahead, and forecast model (via Apps Script properties).</li>
-        <li><strong>Weather Data:</strong> Forecasts are retrieved from the public Open-Meteo API to decide when to add or remove holds.</li>
+        <li><strong>Weather Data:</strong> Public forecasts from Open-Meteo are used to decide when to add or remove holds; no personal calendar data is sent to Open-Meteo.</li>
       </ul>
 
       <h2>Data We Do Not Collect</h2>
@@ -107,13 +107,14 @@
       below your threshold, the corresponding holds may be removed so your calendar reflects current conditions. Automatic refresh
       runs via a time-based trigger roughly every 4 hours; you can also refresh manually from the sidebar.</p>
 
+      <h2>Data Retention &amp; Deletion</h2>
+      <p>Your settings remain in Apps Script properties until you change them or uninstall. Uninstall options let you disable the
+      trigger, clear events, and/or delete the Windblock calendar. You can also revoke access anytime from your Google Account
+      permissions.</p>
+
       <h2>Security</h2>
       <p>Windblock runs on Google Apps Script and uses Google Calendar APIs under your Google account. We do not operate external
       servers that store your calendar data; settings are stored within Apps Script properties associated with your account.</p>
-
-      <h2>Uninstall</h2>
-      <p>You can uninstall from the sidebar at any time. Options include disabling the trigger, clearing events, or deleting the
-      Windblock calendar (subject to Google API limitations). You may also revoke access from your Google Account permissions.</p>
 
       <h2>Changes</h2>
       <p>If we update this policy, we will change the effective date above. Continued use of Windblock after changes means you
