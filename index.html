@@ -392,50 +392,100 @@
   <script>
     // set current year
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Screenshot click-to-enlarge functionality
-    document.addEventListener('DOMContentLoaded', function() {
+  
+    // Screenshot click-to-enlarge
+    document.addEventListener('DOMContentLoaded', function () {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
       const images = document.querySelectorAll('.shots img');
-
-      images.forEach(function(img) {
-        img.addEventListener('click', function() {
+  
+      images.forEach(function (img) {
+        img.addEventListener('click', function () {
           modal.classList.add('active');
           modalImg.src = this.src;
           modalImg.alt = this.alt;
         });
       });
-
-      modal.addEventListener('click', function(e) {
+  
+      modal.addEventListener('click', function (e) {
         if (e.target === modal) { closeModal(); }
       });
-
-      document.addEventListener('keydown', function(e) {
+  
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) { closeModal(); }
       });
     });
-
+  
     function closeModal() {
       document.getElementById('imageModal').classList.remove('active');
     }
-
-    // Intercept "Install" until Marketplace URL is live
+  
+    // ---- Install click tracking + "Coming soon" handling ----
     (function () {
-      const links = document.querySelectorAll('a.js-coming-soon');
-      const soonModal = document.getElementById('comingSoonModal');
-      const closeBtn = document.getElementById('comingSoonClose');
-
-      function openSoon(e){
-        // If you've replaced the placeholder, let it navigate for real
-        if (!e.currentTarget.href.includes('YOUR_MARKETPLACE_URL')) return;
-        e.preventDefault();
-        soonModal.classList.add('active');
+      const installLinks = document.querySelectorAll('a.js-coming-soon'); // header, hero CTA, footer
+      const soonModal   = document.getElementById('comingSoonModal');
+      const closeBtn    = document.getElementById('comingSoonClose');
+  
+      function positionFor(el) {
+        if (el.closest('header')) return 'header';
+        if (el.closest('footer')) return 'footer';
+        return 'hero';
       }
-
-      links.forEach(a => a.addEventListener('click', openSoon));
-      closeBtn.addEventListener('click', () => soonModal.classList.remove('active'));
-      soonModal.addEventListener('click', (e) => { if (e.target === soonModal) soonModal.classList.remove('active'); });
+  
+      function trackInstallClick(anchor) {
+        // GA4 event for button/link click
+        if (typeof gtag === 'function') {
+          gtag('event', 'install_click', {
+            position: positionFor(anchor),
+            page_path: location.pathname
+          });
+        }
+      }
+  
+      function openSoonModal() {
+        soonModal.classList.add('active');
+        if (typeof gtag === 'function') {
+          gtag('event', 'coming_soon_shown', { page_path: location.pathname });
+        }
+      }
+  
+      installLinks.forEach(a => {
+        a.addEventListener('click', function (e) {
+          const href = a.getAttribute('href') || '';
+          trackInstallClick(a);
+  
+          // If placeholder is still in use, show modal instead of navigating
+          if (href.includes('YOUR_MARKETPLACE_URL')) {
+            e.preventDefault();
+            openSoonModal();
+            return;
+          }
+  
+          // Ensure GA event ships before same-tab navigation
+          if (!a.target || a.target === '_self') {
+            e.preventDefault();
+            setTimeout(() => { window.location.href = href; }, 120);
+          }
+        });
+      });
+  
+      // Modal close tracking
+      closeBtn.addEventListener('click', () => {
+        soonModal.classList.remove('active');
+        if (typeof gtag === 'function') {
+          gtag('event', 'coming_soon_dismissed', { page_path: location.pathname });
+        }
+      });
+  
+      // Click outside to close
+      soonModal.addEventListener('click', (e) => {
+        if (e.target === soonModal) {
+          soonModal.classList.remove('active');
+          if (typeof gtag === 'function') {
+            gtag('event', 'coming_soon_dismissed', { page_path: location.pathname, reason: 'backdrop' });
+          }
+        }
+      });
     })();
   </script>
 </body>
