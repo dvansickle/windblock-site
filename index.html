@@ -234,6 +234,7 @@
       <nav class="links">
         <a class="under js-coming-soon" href="YOUR_MARKETPLACE_URL">Install</a>
         <a class="under" href="#how">How it works</a>
+        <a class="under" href="/support/">Support</a>
         <a class="under" href="mailto:support@windblock.app">Contact</a>
       </nav>
     </header>
@@ -351,6 +352,9 @@
           <summary>Can I uninstall cleanly?</summary>
           <p class="muted">Yes. The sidebar includes <em>Uninstall…</em> with options to disable the trigger, clear events, or delete the Windblock calendar.</p>
         </details>
+        <p class="muted" style="margin-top:8px">
+          Need help installing or troubleshooting? See the <a class="under" href="/support/">Support page</a>.
+        </p>
       </div>
     </section>
 
@@ -359,6 +363,8 @@
         <a class="under js-coming-soon" href="YOUR_MARKETPLACE_URL">Install</a>
         <span>•</span>
         <a class="under" href="/privacy/">Privacy</a>
+        <span>•</span>
+        <a class="under" href="/support/">Support</a>
         <span>•</span>
         <a class="under" href="/terms/">Terms</a>
         <span>•</span>
@@ -392,13 +398,13 @@
   <script>
     // set current year
     document.getElementById('y').textContent = new Date().getFullYear();
-  
+
     // Screenshot click-to-enlarge
     document.addEventListener('DOMContentLoaded', function () {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
       const images = document.querySelectorAll('.shots img');
-  
+
       images.forEach(function (img) {
         img.addEventListener('click', function () {
           modal.classList.add('active');
@@ -406,34 +412,33 @@
           modalImg.alt = this.alt;
         });
       });
-  
+
       modal.addEventListener('click', function (e) {
         if (e.target === modal) { closeModal(); }
       });
-  
+
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) { closeModal(); }
       });
     });
-  
+
     function closeModal() {
       document.getElementById('imageModal').classList.remove('active');
     }
-  
+
     // ---- Install click tracking + "Coming soon" handling ----
     (function () {
       const installLinks = document.querySelectorAll('a.js-coming-soon'); // header, hero CTA, footer
       const soonModal   = document.getElementById('comingSoonModal');
       const closeBtn    = document.getElementById('comingSoonClose');
-  
+
       function positionFor(el) {
         if (el.closest('header')) return 'header';
         if (el.closest('footer')) return 'footer';
         return 'hero';
       }
-  
+
       function trackInstallClick(anchor) {
-        // GA4 event for button/link click
         if (typeof gtag === 'function') {
           gtag('event', 'install_click', {
             position: positionFor(anchor),
@@ -441,26 +446,26 @@
           });
         }
       }
-  
+
       function openSoonModal() {
         soonModal.classList.add('active');
         if (typeof gtag === 'function') {
           gtag('event', 'coming_soon_shown', { page_path: location.pathname });
         }
       }
-  
+
       installLinks.forEach(a => {
         a.addEventListener('click', function (e) {
           const href = a.getAttribute('href') || '';
           trackInstallClick(a);
-  
+
           // If placeholder is still in use, show modal instead of navigating
           if (href.includes('YOUR_MARKETPLACE_URL')) {
             e.preventDefault();
             openSoonModal();
             return;
           }
-  
+
           // Ensure GA event ships before same-tab navigation
           if (!a.target || a.target === '_self') {
             e.preventDefault();
@@ -468,7 +473,7 @@
           }
         });
       });
-  
+
       // Modal close tracking
       closeBtn.addEventListener('click', () => {
         soonModal.classList.remove('active');
@@ -476,7 +481,7 @@
           gtag('event', 'coming_soon_dismissed', { page_path: location.pathname });
         }
       });
-  
+
       // Click outside to close
       soonModal.addEventListener('click', (e) => {
         if (e.target === soonModal) {
