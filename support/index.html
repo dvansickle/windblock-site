@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Support — Windblock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Windblock support: install help, troubleshooting, known issues, and contact." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Support — Windblock" />
+  <meta property="og:description" content="Windblock support: install help, troubleshooting, known issues, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://windblock.app/support/" />
+  <link rel="icon" href="/assets/icons/windblock-128-white.png" />
+
+  <!-- (Optional) GA used on the public site -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2HM6ZT030"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G2HM6ZT030');
+  </script>
+
+  <style>
+    :root{
+      --bg:#0b0f14; --fg:#eaf2fb; --muted:#b7c6d9; --accent:#45b3ff;
+      --accent2:#8bd0ff; --card:#121822; --line:#223042;
+      --radius-lg:16px; --radius-md:12px; --success:#29cc6a;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    a{color:var(--accent);text-decoration:none}
+    a.under{text-decoration:underline}
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand img{width:28px;height:28px}
+    nav.links{display:flex;gap:12px;flex-wrap:wrap}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px}
+    .prose h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+    .prose h2{font-size:18px;margin:22px 0 8px}
+    .prose h3{font-size:16px;margin:18px 0 6px}
+    .muted{color:var(--muted)}
+    .prose p{margin:8px 0}
+    .prose ul{margin:8px 0 8px 20px}
+    .prose li{margin:6px 0}
+    .grid{display:grid;gap:16px}
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    @media (max-width:900px){
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+      .grid.cols-2{grid-template-columns:1fr}
+    }
+    .kbd{border:1px solid var(--line);padding:0 6px;border-radius:6px;background:#0e141d}
+    .ok{color:var(--success);font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <img src="/assets/icons/windblock-128-white.png" alt="Windblock logo" />
+        <span>Windblock</span>
+      </div>
+      <nav class="links">
+        <a class="under" href="/">Home</a>
+        <a class="under" href="/privacy/">Privacy</a>
+        <a class="under" href="/terms/">Terms</a>
+        <a class="under" href="mailto:support@windblock.app">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Content -->
+    <section class="card prose">
+      <h1>Support</h1>
+      <p class="muted">Install help, first-run tips, troubleshooting, and how to contact us.</p>
+
+      <div class="grid cols-2">
+        <div>
+          <h2>Getting started</h2>
+          <ol>
+            <li>Install Windblock from the Google Workspace Marketplace.</li>
+            <li>Open Google Calendar and click the Windblock icon in the right sidebar.</li>
+            <li>Enter your <strong>ZIP</strong>, wind threshold (mph), hours, days ahead, and model.</li>
+            <li>Click <strong>Setup</strong> &mdash; this saves settings, creates the “Windblock (ZIP)” calendar if needed, colors it, and enables a refresh every ~4 hours.</li>
+            <li>Click <strong>Refresh</strong> any time to update immediately.</li>
+          </ol>
+
+          <h3>What you should see</h3>
+          <ul>
+            <li>A calendar named <em>Windblock (ZIP)</em> appears in the left pane.</li>
+            <li>One-hour events (e.g., <em>15 WNW ☀️</em>) are added for hours that meet your threshold.</li>
+            <li>Events are removed automatically if later forecasts drop below your threshold.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Troubleshooting</h2>
+
+          <h3>No events after Setup</h3>
+          <ul>
+            <li>Press <strong>Refresh</strong> once; initial fetch may take ~20–30s.</li>
+            <li>Reload Calendar (<span class="kbd">Cmd/Ctrl</span> + <span class="kbd">R</span>).</li>
+            <li>Confirm the <em>Windblock (ZIP)</em> calendar is checked (visible) in the left pane.</li>
+          </ul>
+
+          <h3>Windblock icon still visible after uninstall</h3>
+          <ul>
+            <li>From the sidebar menu (⋮) choose <em>Manage add-on</em> and uninstall.</li>
+            <li>Reload Calendar. The sidebar caches; a refresh usually clears the icon.</li>
+          </ul>
+
+          <h3>“URL cannot be used in an add-on”</h3>
+          <p>Links that open new windows may be blocked. All external links in the add-on are limited to
+            <em>mailto:</em> support and the public <em>Privacy</em> page.</p>
+
+          <h3>“urlFetchWhitelist is required”</h3>
+          <p>This occurs if the deployment’s URL whitelist is missing. Windblock only fetches:</p>
+          <ul>
+            <li><code>https://api.open-meteo.com/</code></li>
+            <li><code>https://api.zippopotam.us/</code></li>
+          </ul>
+          <p class="muted">If you’re testing your own fork, add these to the deployment’s <em>URL fetch whitelist</em>.</p>
+        </div>
+      </div>
+
+      <h2>Uninstall / cleanup</h2>
+      <p>Open the Windblock sidebar → <em>Uninstall…</em>. You can:</p>
+      <ul>
+        <li>Disable the auto-refresh trigger only</li>
+        <li>Disable + clear Windblock events</li>
+        <li>Disable + delete (or remove) the Windblock calendar</li>
+      </ul>
+      <p class="muted">If the calendar chip lingers in the left pane, reload Calendar; the UI caches state.</p>
+
+      <h2>Permissions (scopes)</h2>
+      <ul>
+        <li><code>…/auth/calendar.addons.execute</code> — runs the add-on UI inside Google Calendar.</li>
+        <li><code>…/auth/script.locale</code> — localizes date/time and language.</li>
+        <li><code>…/auth/script.external_request</code> — fetches public weather/ZIP data.</li>
+        <li><code>…/auth/calendar</code> — creates and manages the dedicated <em>Windblock (ZIP)</em> calendar and its events.</li>
+        <li><code>…/auth/script.scriptapp</code> — schedules the 4-hour auto-refresh trigger.</li>
+      </ul>
+      <p>We store your ZIP, threshold, hours, and model inside your Google account (Apps Script properties). We don’t run external servers for your calendar data. See <a class="under" href="/privacy/">Privacy</a> for details.</p>
+
+      <h2>Contact</h2>
+      <p>Need help? Email <a class="under" href="mailto:support@windblock.app">support@windblock.app</a>.
+        Include your ZIP, threshold, and a screenshot of the sidebar if possible.</p>
+
+      <h3>Quick self-check (optional)</h3>
+      <p>From the sidebar, try <span class="ok">Refresh</span> and then reload Calendar. If nothing appears, verify the
+        <em>Windblock (ZIP)</em> calendar exists and is selected in the left pane.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer style="border-top:1px solid var(--line);margin-top:28px;padding:18px 0;color:var(--muted);font-size:14px">
+      <div>&copy; <span id="y"></span> Windblock</div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
