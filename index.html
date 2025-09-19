@@ -203,17 +203,6 @@
     }
     .modal-close:hover{ color:var(--accent); }
 
-    /* Coming soon modal card */
-    .modal-card{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      max-width: 480px;
-      width: 92vw;
-      padding: 18px;
-      color: var(--fg);
-    }
-
     /* Responsive */
     @media (max-width:900px){
       .hero{grid-template-columns:1fr}
@@ -232,7 +221,7 @@
         <span>Windblock</span>
       </div>
       <nav class="links">
-        <a class="under js-coming-soon" href="YOUR_MARKETPLACE_URL">Install</a>
+        <a class="under js-install" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install</a>
         <a class="under" href="#how">How it works</a>
         <a class="under" href="/support/">Support</a>
         <a class="under" href="mailto:support@windblock.app">Contact</a>
@@ -249,7 +238,7 @@
           frees them up again when the forecast shifts. You won’t double-book or miss a session.
         </p>
         <div class="badges">
-          <a class="cta js-coming-soon" href="YOUR_MARKETPLACE_URL">Install from Google Workspace™ Marketplace</a>
+          <a class="cta js-install" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install from Google Workspace™ Marketplace</a>
           <a class="ghost" href="#how">How it works</a>
         </div>
       </div>
@@ -360,7 +349,7 @@
 
     <footer>
       <div class="links">
-        <a class="under js-coming-soon" href="YOUR_MARKETPLACE_URL">Install</a>
+        <a class="under js-install" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install</a>
         <span>•</span>
         <a class="under" href="/privacy/">Privacy</a>
         <span>•</span>
@@ -383,19 +372,6 @@
   <div id="imageModal" class="modal" aria-hidden="true">
     <span class="modal-close" onclick="closeModal()" aria-label="Close">&times;</span>
     <img class="modal-content" id="modalImage" alt="">
-  </div>
-
-  <!-- Coming soon modal -->
-  <div id="comingSoonModal" class="modal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-label="Coming soon">
-      <h3 style="margin:0 0 6px;">Coming soon</h3>
-      <p style="margin:0 0 12px;">
-        The Windblock Marketplace listing is in review. Check back soon or
-        <a class="under" href="mailto:support@windblock.app">email us</a>
-        and we’ll let you know the moment it’s live.
-      </p>
-      <button id="comingSoonClose" class="ghost" style="width:100%;">Got it</button>
-    </div>
   </div>
 
   <script>
@@ -429,11 +405,9 @@
       document.getElementById('imageModal').classList.remove('active');
     }
 
-    // ---- Install click tracking + "Coming soon" handling ----
+    // ---- Install click tracking (no "coming soon" modal) ----
     (function () {
-      const installLinks = document.querySelectorAll('a.js-coming-soon'); // header, hero CTA, footer
-      const soonModal   = document.getElementById('comingSoonModal');
-      const closeBtn    = document.getElementById('comingSoonClose');
+      const installLinks = document.querySelectorAll('a.js-install'); // header, hero CTA, footer
 
       function positionFor(el) {
         if (el.closest('header')) return 'header';
@@ -450,24 +424,10 @@
         }
       }
 
-      function openSoonModal() {
-        soonModal.classList.add('active');
-        if (typeof gtag === 'function') {
-          gtag('event', 'coming_soon_shown', { page_path: location.pathname });
-        }
-      }
-
       installLinks.forEach(a => {
         a.addEventListener('click', function (e) {
           const href = a.getAttribute('href') || '';
           trackInstallClick(a);
-
-          // If placeholder is still in use, show modal instead of navigating
-          if (href.includes('YOUR_MARKETPLACE_URL')) {
-            e.preventDefault();
-            openSoonModal();
-            return;
-          }
 
           // Ensure GA event ships before same-tab navigation
           if (!a.target || a.target === '_self') {
@@ -475,24 +435,6 @@
             setTimeout(() => { window.location.href = href; }, 120);
           }
         });
-      });
-
-      // Modal close tracking
-      closeBtn.addEventListener('click', () => {
-        soonModal.classList.remove('active');
-        if (typeof gtag === 'function') {
-          gtag('event', 'coming_soon_dismissed', { page_path: location.pathname });
-        }
-      });
-
-      // Click outside to close
-      soonModal.addEventListener('click', (e) => {
-        if (e.target === soonModal) {
-          soonModal.classList.remove('active');
-          if (typeof gtag === 'function') {
-            gtag('event', 'coming_soon_dismissed', { page_path: location.pathname, reason: 'backdrop' });
-          }
-        }
       });
     })();
   </script>
