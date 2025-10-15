@@ -13,15 +13,6 @@
   <meta property="og:url" content="https://windblock.app/support/" />
   <link rel="icon" href="/assets/icons/windblock-128-white.png" />
 
-  <!-- (Optional) GA used on the public site -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2HM6ZT030"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-G2HM6ZT030');
-  </script>
-
   <style>
     :root{
       --bg:#0b0f14; --fg:#eaf2fb; --muted:#b7c6d9; --accent:#45b3ff;
@@ -86,9 +77,10 @@
           <ol>
             <li>Install Windblock from the Google Workspace™ Marketplace.</li>
             <li>Open Google Calendar™ and click the Windblock icon in the right sidebar.</li>
-            <li>Enter your <strong>location</strong> (ZIP or lat,lon like <code>43.0730,-89.4528</code>), wind threshold (mph), hours, days ahead, and model.</li>
-            <li>Click <strong>Setup</strong> &mdash; this saves settings, creates the "Windblock (ZIP)" calendar if needed, colors it, and enables a refresh every ~4 hours.</li>
+            <li>Enter your <strong>location</strong> (ZIP or lat,lon like <code>43.0730,-89.4528</code>), wind threshold (mph), hours, and days ahead.</li>
+            <li>Click <strong>Setup</strong> to save your settings and enable auto-refresh every ~4 hours.</li>
             <li>Click <strong>Refresh</strong> any time to update immediately.</li>
+            <li>Use <strong>Pause</strong> and <strong>Resume</strong> to stop or restart auto-refresh at any time.</li>
           </ol>
 
           <h3>What you should see</h3>
@@ -115,24 +107,15 @@
             <li>Reload Google Calendar™. The sidebar caches; a refresh usually clears the icon.</li>
           </ul>
 
-          <h3>“URL cannot be used in an add-on”</h3>
-          <p>Links that open new windows may be blocked. All external links in the add-on are limited to
-            <em>mailto:</em> support and the public <em>Privacy</em> page.</p>
-
-          <h3>“urlFetchWhitelist is required”</h3>
-          <p>This occurs if the deployment's URL whitelist is missing. Windblock only fetches:</p>
-          <ul>
-            <li><code>https://weather.visualcrossing.com/</code></li>
-            <li><code>https://api.zippopotam.us/</code></li>
-          </ul>
-          <p class="muted">If you’re testing your own fork, add these to the deployment’s <em>URL fetch whitelist</em>.</p>
+          <h3>External links blocked</h3>
+          <p>Some links may not open directly inside the sidebar. If prompted, open them in a new browser tab instead.</p>
         </div>
       </div>
 
       <h2>Uninstall / cleanup</h2>
       <p>Open the Windblock sidebar → <em>Uninstall…</em>. You can:</p>
       <ul>
-        <li>Disable the auto-refresh trigger only</li>
+        <li>Disable the auto-refresh trigger</li>
         <li>Disable + clear Windblock events</li>
         <li>Disable + delete (or remove) the Windblock calendar</li>
       </ul>
@@ -146,13 +129,13 @@
         <li><code>…/auth/calendar</code> — creates and manages the dedicated <em>Windblock (ZIP)</em> calendar and its events.</li>
         <li><code>…/auth/script.scriptapp</code> — schedules the 4-hour auto-refresh trigger.</li>
       </ul>
-      <p>We store your location, threshold, hours, and model inside your Google account (Apps Script properties). We don't run external servers for your calendar data. See <a class="under" href="/privacy/">Privacy</a> for details.</p>
+      <p>We store your location, threshold, and settings inside your Google account (Apps Script properties). We don't run external servers for your calendar data. See <a class="under" href="/privacy/">Privacy</a> for details.</p>
 
       <h2>Contact</h2>
       <p>Need help? Email <a class="under" href="mailto:support@windblock.app">support@windblock.app</a>.
         Include your location, threshold, and a screenshot of the sidebar if possible.</p>
 
-      <h3>Quick self-check (optional)</h3>
+      <h3>Quick self-check</h3>
       <p>From the sidebar, try <span class="ok">Refresh</span> and then reload Google Calendar™. If nothing appears, verify the
         <em>Windblock (ZIP)</em> calendar exists and is selected in the left pane.</p>
     </section>

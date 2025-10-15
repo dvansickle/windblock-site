@@ -71,56 +71,49 @@
     <!-- Content -->
     <section class="card prose">
       <h1>Privacy Policy</h1>
-      <div class="muted">Effective date: August 23, 2025</div>
+      <div class="muted">Effective date: Oct 15, 2025</div>
 
       <h2>Overview</h2>
-      <p>Windblock is a Google Calendar™ add-on that creates and updates calendar events based on public weather forecast data.
-      We request only the access required to function, and processing runs within your Google account.</p>
+      <p>Windblock is a Google Calendar™ add-on that creates and updates calendar events based on public wind forecasts.
+      We request only the access required to function. Processing runs in your Google account; we don’t export your calendar data to our servers.</p>
 
-      <!-- Explicit Google Data Access section with scopes -->
-      <h2>Google Data Access (Scopes &amp; Purposes)</h2>
-      <p>Windblock uses these Google permissions to operate. Each permission is limited to the stated purpose:</p>
+      <h2>Google Data Access (Scopes &amp; purposes)</h2>
+      <p>Windblock uses these Google permissions for the reasons below:</p>
       <ul>
-        <li><code>https://www.googleapis.com/auth/calendar.addons.execute</code> — runs the add-on UI inside Google Calendar™ (cards, buttons, forms).</li>
-        <li><code>https://www.googleapis.com/auth/script.locale</code> — localizes date/time and language for the sidebar and event text.</li>
-        <li><code>https://www.googleapis.com/auth/script.external_request</code> — fetches public weather forecasts from <a class="under" href="https://www.visualcrossing.com/" target="_blank" rel="noopener">Visual Crossing</a>.</li>
-        <li><code>https://www.googleapis.com/auth/script.storage</code> — stores your settings (location, wind threshold, hours, model) in Apps Script properties within your Google account. On the consent screen this appears as "View and manage data associated with the application."</li>
-        <li><code>https://www.googleapis.com/auth/calendar</code> — creates, updates, and removes 1-hour events in a dedicated calendar named “Windblock (ZIP)”, and creates that calendar if it doesn’t exist. Other calendars are not read or modified.</li>
-        <li><code>https://www.googleapis.com/auth/script.scriptapp</code> — creates a time-based trigger that refreshes forecasts about every 4 hours.</li>
+        <li><code>https://www.googleapis.com/auth/calendar.addons.execute</code> — display and run the sidebar UI in Google Calendar™.</li>
+        <li><code>https://www.googleapis.com/auth/script.locale</code> — format dates/times and language appropriately.</li>
+        <li><code>https://www.googleapis.com/auth/script.external_request</code> — fetch public weather and ZIP geocoding data (e.g., Visual Crossing and Zippopotam).</li>
+        <li><code>https://www.googleapis.com/auth/script.storage</code> — store your settings (location, wind threshold, hours, days ahead, paused) in Apps Script properties within your Google account.</li>
+        <li><code>https://www.googleapis.com/auth/calendar</code> — create/update/remove 1-hour events in a dedicated calendar named “Windblock”, and create that calendar if needed.</li>
+        <li><code>https://www.googleapis.com/auth/script.scriptapp</code> — schedule an automatic refresh roughly every 4 hours (you can pause/resume).</li>
       </ul>
 
-      <h2>Data We Access</h2>
+      <h2>Data we access</h2>
       <ul>
-        <li><strong>Google Calendar™:</strong> Windblock creates/updates one-hour events only in the dedicated “Windblock (ZIP)” calendar. Other calendars are not modified.</li>
-        <li><strong>Settings stored in your account:</strong> Location (ZIP or lat/lon), wind threshold, hours, days ahead, and forecast model (via Apps Script properties).</li>
-        <li><strong>Weather Data:</strong> Public forecasts from Visual Crossing are used to decide when to add or remove holds; no personal calendar data is sent to Visual Crossing.</li>
+        <li><strong>Windblock calendar only:</strong> Windblock creates/updates one-hour events in your “Windblock” calendar. Other calendars aren’t modified.</li>
+        <li><strong>Your settings:</strong> location (ZIP or lat/lon), wind threshold (mph), hours window, days ahead, and whether auto-refresh is paused.</li>
+        <li><strong>Weather data:</strong> public forecasts and ZIP geocoding used to decide when to add or remove events. No personal calendar data is sent to weather providers.</li>
       </ul>
 
-      <h2>Data We Do Not Collect</h2>
+      <h2>Data we do not collect</h2>
       <ul>
-        <li>We do not export your calendar contents to external servers.</li>
-        <li>We do not sell or share personal data with third parties.</li>
-        <li>We do not read or modify your non-Windblock calendars.</li>
-        <li>We do not use third-party trackers in the add-on.</li>
+        <li>We don’t export your calendar contents to external servers.</li>
+        <li>We don’t sell or share personal data with third parties.</li>
+        <li>We don’t read or modify your non-Windblock calendars.</li>
+        <li>We don’t include third-party trackers in the add-on UI.</li>
       </ul>
 
-      <h2>How Your Data Is Used</h2>
-      <p>Your settings and public forecasts are used to create or update Windblock events in your calendar. When a forecast drops
-      below your threshold, the corresponding holds may be removed so your calendar reflects current conditions. Automatic refresh
-      runs via a time-based trigger roughly every 4 hours; you can also refresh manually from the sidebar.</p>
+      <h2>How your data is used</h2>
+      <p>Your settings and public forecasts are used to create/update Windblock events. If a later forecast drops below your threshold, related events may be removed. An automatic refresh runs about every 4 hours; you can also click Refresh manually or Pause/Resume auto-refresh from the sidebar.</p>
 
-      <h2>Data Retention &amp; Deletion</h2>
-      <p>Your settings remain in Apps Script properties until you change them or uninstall. Uninstall options let you disable the
-      trigger, clear events, and/or delete the Windblock calendar. You can also revoke access anytime from your Google Account
-      permissions.</p>
+      <h2>Retention &amp; deletion</h2>
+      <p>Your settings remain in Apps Script properties until you change them or uninstall. The sidebar’s <em>Uninstall…</em> flow lets you disable the trigger, clear events, and/or delete the Windblock calendar (subject to Google API permissions). You can revoke access any time from your Google Account permissions.</p>
 
       <h2>Security</h2>
-      <p>Windblock runs on Google Apps Script and uses Google Calendar™ APIs under your Google account. We do not operate external
-      servers that store your calendar data; settings are stored within Apps Script properties associated with your account.</p>
+      <p>Windblock runs on Google Apps Script and uses Google Calendar™ APIs under your Google account. We do not operate external databases of your calendar data.</p>
 
       <h2>Changes</h2>
-      <p>If we update this policy, we will change the effective date above. Continued use of Windblock after changes means you
-      accept the updated policy.</p>
+      <p>If this policy changes, we’ll update the date above. Continued use after changes means you accept the updated policy.</p>
 
       <h2>Contact</h2>
       <p>Questions? Email <a class="under" href="mailto:support@windblock.app">support@windblock.app</a>.</p>
