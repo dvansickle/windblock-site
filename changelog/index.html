@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Changelog — Windblock</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Changelog for Windblock: new features, fixes, and improvements." />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2HM6ZT030"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G2HM6ZT030');
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Changelog — Windblock" />
+  <meta property="og:description" content="All the updates to Windblock: features, fixes, and improvements." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://windblock.app/changelog/" />
+  <meta property="og:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Changelog — Windblock" />
+  <meta name="twitter:description" content="All the updates to Windblock: features, fixes, and improvements." />
+  <meta name="twitter:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
+
+  <link rel="icon" href="https://windblock.app/assets/icons/windblock-128-white.png" />
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --fg:#eaf2fb;
+      --muted:#b7c6d9;
+      --accent:#45b3ff;
+      --accent2:#8bd0ff;
+      --card:#121822;
+      --line:#223042;
+      --radius-lg:16px;
+      --radius-md:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    a{color:var(--accent);text-decoration:none}
+    a.under{text-decoration:underline}
+    .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
+
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand img{width:28px;height:28px}
+    nav.links{display:flex;gap:12px;flex-wrap:wrap}
+    nav a.active{color:#fff;border-bottom:2px solid var(--accent)}
+
+    .hero{padding:22px 0 10px}
+    .hero h1{font-size:34px;line-height:1.15;margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0}
+
+    .releases{display:grid;gap:16px;margin-top:18px}
+    .release{
+      background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius-lg);padding:18px
+    }
+    .release header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 6px}
+    .when{font-weight:700;font-size:18px}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}
+    .tag{display:inline-block;border:1px solid var(--line);color:var(--muted);
+      padding:2px 8px;border-radius:999px;font-size:12px}
+    .release ul{margin:10px 0 0 20px}
+    .release li{margin:6px 0}
+    .small{color:var(--muted);font-size:14px}
+
+    footer{border-top:1px solid var(--line);margin-top:32px;padding:20px 0;color:var(--muted);font-size:14px}
+    footer .links{display:flex;gap:12px;flex-wrap:wrap}
+
+    @media (max-width:900px){
+      header{flex-direction:column;align-items:flex-start;gap:8px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img alt="Windblock logo" src="/assets/icons/windblock-128-white.png" />
+        <span>Windblock</span>
+      </div>
+      <nav class="links">
+        <a class="under js-install" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install</a>
+        <a class="under" href="/">Home</a>
+        <a class="under" href="/support/">Support</a>
+        <a class="under active" href="/changelog/">Changelog</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Changelog</h1>
+      <p>Big improvements and fixes, listed by date. Newest first.</p>
+    </section>
+
+    <section class="releases">
+
+      <article id="2025-10-14" class="release">
+        <header>
+          <div class="when">Oct 14, 2025</div>
+          <div class="tags">
+            <span class="tag">Provider</span>
+            <span class="tag">UX</span>
+            <span class="tag">Reliability</span>
+          </div>
+        </header>
+        <ul>
+          <li>Switched to <strong>Visual Crossing</strong> for hourly wind — better coverage and stability.</li>
+          <li><strong>Smarter Setup/Refresh:</strong> Setup rebuilds cleanly when you change settings or location; Refresh pulls the latest without wiping.</li>
+          <li>Clearer, shorter <strong>toasts</strong> that explain what was added now vs. what will arrive soon.</li>
+        </ul>
+      </article>
+
+      <article id="2025-10-12" class="release">
+        <header>
+          <div class="when">Oct 12, 2025</div>
+          <div class="tags">
+            <span class="tag">Cleanup</span>
+            <span class="tag">UI</span>
+          </div>
+        </header>
+        <ul>
+          <li>More reliable <strong>calendar cleanup</strong> during rebuilds.</li>
+          <li>Moved <em>Uninstall…</em> to the bottom of the sidebar and de-emphasized its styling.</li>
+        </ul>
+      </article>
+
+      <article id="2025-09-15" class="release">
+        <header>
+          <div class="when">Sep 15, 2025</div>
+          <div class="tags">
+            <span class="tag">Input</span>
+          </div>
+        </header>
+        <ul>
+          <li>Added <strong>lat,lon</strong> input (e.g., <code>43.0730,-89.4528</code>) alongside ZIP.</li>
+        </ul>
+      </article>
+
+      <article id="2025-08-20" class="release">
+        <header>
+          <div class="when">Aug 20, 2025</div>
+          <div class="tags">
+            <span class="tag">UX</span>
+          </div>
+        </header>
+        <ul>
+          <li>New <strong>status messaging</strong> that shows how many wind hours were added right away.</li>
+        </ul>
+      </article>
+
+      <article id="2025-07-05" class="release">
+        <header>
+          <div class="when">Jul 5, 2025</div>
+          <div class="tags">
+            <span class="tag">Performance</span>
+          </div>
+        </header>
+        <ul>
+          <li><strong>Faster UI writes:</strong> adds the first few days immediately when there are many matches; the rest follow shortly.</li>
+        </ul>
+      </article>
+
+      <article id="2025-06-10" class="release">
+        <header>
+          <div class="when">Jun 10, 2025</div>
+          <div class="tags">
+            <span class="tag">Automation</span>
+          </div>
+        </header>
+        <ul>
+          <li>Automatic background refresh every <strong>4 hours</strong> to keep your calendar current.</li>
+        </ul>
+      </article>
+
+      <article id="2025-05-01" class="release">
+        <header>
+          <div class="when">May 1, 2025</div>
+          <div class="tags">
+            <span class="tag">Launch</span>
+          </div>
+        </header>
+        <ul>
+          <li><strong>Public beta:</strong> Wind alerts added directly to a dedicated calendar in Google Calendar™.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <footer>
+      <div class="links">
+        <a class="under js-install" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install</a>
+        <span>•</span>
+        <a class="under" href="/privacy/">Privacy</a>
+        <span>•</span>
+        <a class="under" href="/support/">Support</a>
+        <span>•</span>
+        <a class="under" href="/terms/">Terms</a>
+        <span>•</span>
+        <a class="under" href="mailto:support@windblock.app">Contact support</a>
+      </div>
+      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock</div>
+      <div style="margin-top:6px;font-size:12px;color:#8aa1b8">
+        Google Calendar™ and Google Workspace™ are trademarks of Google LLC.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // set current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // install click tracking (mirrors homepage)
+    (function () {
+      const installLinks = document.querySelectorAll('a.js-install');
+      function positionFor(el) {
+        if (el.closest('header')) return 'header';
+        if (el.closest('footer')) return 'footer';
+        return 'content';
+      }
+      function trackInstallClick(anchor) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'install_click', {
+            position: positionFor(anchor),
+            page_path: location.pathname
+          });
+        }
+      }
+      installLinks.forEach(a => {
+        a.addEventListener('click', function (e) {
+          const href = a.getAttribute('href') || '';
+          trackInstallClick(a);
+          if (!a.target || a.target === '_self') {
+            e.preventDefault();
+            setTimeout(() => { window.location.href = href; }, 120);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
