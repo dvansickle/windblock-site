@@ -67,6 +67,8 @@
       </div>
       <nav class="links">
         <a class="under" href="/">Home</a>
+        <a class="under" href="/support/">Support</a>
+        <a class="under" href="/changelog/">Changelog</a>
         <a class="under" href="/privacy/">Privacy</a>
         <a class="under" href="/terms/">Terms</a>
         <a class="under" href="mailto:support@windblock.app">Contact</a>
@@ -84,8 +86,8 @@
           <ol>
             <li>Install Windblock from the Google Workspace™ Marketplace.</li>
             <li>Open Google Calendar™ and click the Windblock icon in the right sidebar.</li>
-            <li>Enter your <strong>ZIP</strong>, wind threshold (mph), hours, days ahead, and model.</li>
-            <li>Click <strong>Setup</strong> &mdash; this saves settings, creates the “Windblock (ZIP)” calendar if needed, colors it, and enables a refresh every ~4 hours.</li>
+            <li>Enter your <strong>location</strong> (ZIP or lat,lon like <code>43.0730,-89.4528</code>), wind threshold (mph), hours, days ahead, and model.</li>
+            <li>Click <strong>Setup</strong> &mdash; this saves settings, creates the "Windblock (ZIP)" calendar if needed, colors it, and enables a refresh every ~4 hours.</li>
             <li>Click <strong>Refresh</strong> any time to update immediately.</li>
           </ol>
 
@@ -118,9 +120,9 @@
             <em>mailto:</em> support and the public <em>Privacy</em> page.</p>
 
           <h3>“urlFetchWhitelist is required”</h3>
-          <p>This occurs if the deployment’s URL whitelist is missing. Windblock only fetches:</p>
+          <p>This occurs if the deployment's URL whitelist is missing. Windblock only fetches:</p>
           <ul>
-            <li><code>https://api.open-meteo.com/</code></li>
+            <li><code>https://weather.visualcrossing.com/</code></li>
             <li><code>https://api.zippopotam.us/</code></li>
           </ul>
           <p class="muted">If you’re testing your own fork, add these to the deployment’s <em>URL fetch whitelist</em>.</p>
@@ -144,11 +146,11 @@
         <li><code>…/auth/calendar</code> — creates and manages the dedicated <em>Windblock (ZIP)</em> calendar and its events.</li>
         <li><code>…/auth/script.scriptapp</code> — schedules the 4-hour auto-refresh trigger.</li>
       </ul>
-      <p>We store your ZIP, threshold, hours, and model inside your Google account (Apps Script properties). We don’t run external servers for your calendar data. See <a class="under" href="/privacy/">Privacy</a> for details.</p>
+      <p>We store your location, threshold, hours, and model inside your Google account (Apps Script properties). We don't run external servers for your calendar data. See <a class="under" href="/privacy/">Privacy</a> for details.</p>
 
       <h2>Contact</h2>
       <p>Need help? Email <a class="under" href="mailto:support@windblock.app">support@windblock.app</a>.
-        Include your ZIP, threshold, and a screenshot of the sidebar if possible.</p>
+        Include your location, threshold, and a screenshot of the sidebar if possible.</p>
 
       <h3>Quick self-check (optional)</h3>
       <p>From the sidebar, try <span class="ok">Refresh</span> and then reload Google Calendar™. If nothing appears, verify the
