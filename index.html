@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Windblock — Wind alerts in your Google Calendar™</title>
+  <title>Windblock — Wind alerts for sailors, surfers & more in Google Calendar™</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Automatically block off windy hours in Google Calendar™. Windblock adds holds when forecasts meet your threshold — and frees them up when the wind shifts." />
+  <meta name="description" content="Windblock is a Google Calendar™ add-on that alerts you to windy conditions — and blocks them on your calendar automatically. Perfect for sailors, wingfoilers, kitesurfers, windsurfers, boaters, and anyone who plans around the wind." />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2HM6ZT030"></script>
@@ -16,22 +16,43 @@
   </script>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Windblock — Wind alerts in your Google Calendar™" />
-  <meta property="og:description" content="Automatically block off windy hours in Google Calendar™. Windblock adds holds when it’s windy — and frees them when the forecast changes." />
+  <meta property="og:title" content="Windblock — Wind alerts for sailors, surfers & more in Google Calendar™" />
+  <meta property="og:description" content="Windblock automatically adds and removes holds on your calendar based on the forecast. Perfect for sailors, wingfoilers, kiteboarders, and windsurfers." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://windblock.app/" />
   <meta property="og:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Windblock — Wind alerts in your Google Calendar™" />
-  <meta name="twitter:description" content="Automatically block off windy hours in Google Calendar™. Adds holds when it’s windy — frees them when the forecast changes." />
+  <meta name="twitter:title" content="Windblock — Wind alerts for sailors, surfers & more in Google Calendar™" />
+  <meta name="twitter:description" content="Automatically block windy hours on your calendar. Ideal for sailors, kiteboarders, wingfoilers, and anyone who chases wind." />
   <meta name="twitter:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
 
+  <!-- Icons / PWA -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Windblock",
+    "operatingSystem": "Web",
+    "applicationCategory": "Utilities",
+    "description": "Windblock is a Google Calendar™ add-on that blocks windy hours automatically. Ideal for sailors, wingfoilers, kiteboarders, windsurfers, boaters, and drone pilots.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "url": "https://windblock.app/",
+    "keywords": "wind alerts, sailors, kiteboarding, wingfoiling, windsurfing, boating, Google Calendar, wind planner",
+    "screenshot": "https://windblock.app/assets/banners/windblock-440x280.png"
+  }
+  </script>
 
   <style>
     :root{
@@ -56,7 +77,7 @@
       padding:0;
       background:var(--bg);
       color:var(--fg);
-      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      font:16px/1.55 system-ui,-apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, sans-serif;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
@@ -238,8 +259,11 @@
         <h1>Automatically block off windy hours in Google Calendar™.</h1>
         <p>
           Stop juggling forecasts and meeting invites. Windblock watches the wind for you,
-          adds hourly holds when conditions meet your threshold — and just as importantly,
-          frees them up again when the forecast shifts. You won’t double-book or miss a session.
+          adds hourly holds when conditions meet your threshold — and frees them up again
+          when the forecast shifts. You won’t double-book or miss a session.
+        </p>
+        <p class="muted" style="margin-top:-4px;">
+          <strong>Perfect for anyone whose day depends on the wind — sailors, wingfoilers, kiteboarders, windsurfers, boaters, drone pilots, and more.</strong>
         </p>
         <div class="badges">
           <a class="cta js-install" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install from Google Workspace™ Marketplace</a>
@@ -279,21 +303,37 @@
       </div>
     </section>
 
+    <!-- New audience section -->
+    <section aria-labelledby="who-uses" class="grid cols-3" style="margin-top:28px;">
+      <div class="card benefit">
+        <h3 id="who-uses">🌬️ Sailors & Boaters</h3>
+        <p class="muted">Plan races, day sails, or lake sessions without constantly checking the forecast — your windy windows are protected automatically.</p>
+      </div>
+      <div class="card benefit">
+        <h3>🪁 Wing & Kite Sports</h3>
+        <p class="muted">Wingfoilers, kitesurfers, and windsurfers use Windblock to keep prime wind hours free from meetings and distractions.</p>
+      </div>
+      <div class="card benefit">
+        <h3>🏗️ Wind-Dependent Work</h3>
+        <p class="muted">Drone pilots, event planners, and outdoor crews keep windy conditions front and center in their schedules.</p>
+      </div>
+    </section>
+
     <div class="spacer"></div>
 
     <section class="card">
       <h3 style="margin:0 0 10px">Screenshots</h3>
       <div class="shots">
         <figure>
-          <img src="assets/screenshots/sidebar-settings.png" alt="Windblock sidebar settings in Google Calendar™" loading="lazy" />
+          <img src="assets/screenshots/sidebar-settings.png" alt="Windblock Google Calendar™ sidebar settings for sailors, kiteboarders, and wingfoilers" loading="lazy" />
           <figcaption>Sidebar settings</figcaption>
         </figure>
         <figure>
-          <img src="assets/screenshots/fullview.png" alt="Windblock calendar events populated in Google Calendar™" loading="lazy" />
+          <img src="assets/screenshots/fullview.png" alt="Windblock calendar events populated in Google Calendar™ for windy sessions" loading="lazy" />
           <figcaption>Calendar events</figcaption>
         </figure>
         <figure>
-          <img src="assets/screenshots/event-details.png" alt="Expanded event details showing wind speed, direction, temperature, and model" loading="lazy" />
+          <img src="assets/screenshots/event-details.png" alt="Expanded Windblock event details with wind speed, direction, temperature, and model" loading="lazy" />
           <figcaption>Event details</figcaption>
         </figure>
       </div>
