@@ -242,6 +242,33 @@
     }
     .settings-list strong { color: var(--blue-dark); }
 
+    .walkthrough {
+      display: grid;
+      gap: 68px;
+      margin-top: 72px;
+      padding-top: 72px;
+      border-top: 1px solid var(--line);
+    }
+    .walkthrough-row {
+      display: grid;
+      grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr);
+      gap: 46px;
+      align-items: center;
+    }
+    .walkthrough-row.reverse {
+      grid-template-columns: minmax(0, 1.28fr) minmax(260px, .72fr);
+    }
+    .walkthrough-row.reverse .walkthrough-copy { order: 2; }
+    .walkthrough-shot {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 18px 50px rgba(17, 38, 58, .11);
+    }
+    .walkthrough-shot img { width: 100%; height: auto; }
+    .walkthrough-copy p:last-child { margin-top: 14px; color: var(--muted); font-size: 18px; }
+
     .scenario-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .scenario {
       min-height: 230px;
@@ -313,7 +340,9 @@
       .hero { min-height: 700px; background-position: 58% center; }
       .hero::before { background: rgba(4, 11, 17, .8); }
       .hero-copy { padding: 66px 0 82px; }
-      .proof-grid, .steps, .scenario-grid, .product-layout, .privacy-layout { grid-template-columns: 1fr; }
+      .proof-grid, .steps, .scenario-grid, .product-layout, .privacy-layout,
+      .walkthrough-row, .walkthrough-row.reverse { grid-template-columns: 1fr; }
+      .walkthrough-row.reverse .walkthrough-copy { order: 0; }
       .proof-item, .step { border-right: 0; border-bottom: 1px solid var(--line); }
       .proof-item:last-child, .step:last-child { border-bottom: 0; }
       .privacy-points { grid-template-columns: 1fr; }
@@ -419,6 +448,31 @@
             <li><span>Daily window</span><strong>Your active hours</strong></li>
             <li><span>Forecast horizon</span><strong>Up to 7 days</strong></li>
           </ul>
+        </div>
+      </div>
+      <div class="shell walkthrough">
+        <div class="walkthrough-row">
+          <div class="walkthrough-copy">
+            <p class="eyebrow">Simple setup</p>
+            <h2>Choose the conditions once.</h2>
+            <p>Enter a location, wind threshold, daily window, and forecast horizon. Setup saves the rules and starts automatic refresh.</p>
+          </div>
+          <figure class="walkthrough-shot">
+            <img src="/assets/screenshots/setup-and-calendar.png" alt="Windblock sidebar settings displayed beside matching wind events in Google Calendar" loading="lazy">
+          </figure>
+        </div>
+        <div class="walkthrough-row reverse">
+          <div class="walkthrough-copy">
+            <p class="eyebrow">Useful detail</p>
+            <h2>See what each hour is based on.</h2>
+            <p>Open an event to see sustained wind, gusts, direction, temperature, forecast source, and timezone.</p>
+          </div>
+          <figure class="walkthrough-shot">
+            <picture>
+              <source media="(max-width: 520px)" srcset="/assets/screenshots/event-details-mobile.png">
+              <img src="/assets/screenshots/event-details-current.png" alt="Windblock event details showing wind speed, gust, direction, temperature, and Visual Crossing source" loading="lazy">
+            </picture>
+          </figure>
         </div>
       </div>
     </section>
