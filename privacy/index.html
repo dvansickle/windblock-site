@@ -13,8 +13,8 @@
   <meta property="og:url" content="https://windblock.app/privacy/" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="manifest" href="/site.webmanifest">
 
   <style>
@@ -34,7 +34,7 @@
     .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
 
     header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--fg);text-decoration:none}
     .brand img{width:28px;height:28px}
     nav.links{display:flex;gap:12px;flex-wrap:wrap}
 
@@ -58,10 +58,10 @@
   <div class="wrap">
     <!-- Header -->
     <header>
-      <div class="brand">
+      <a class="brand" href="/" aria-label="Windblock home">
         <img src="/assets/icons/windblock-128-white.png" alt="Windblock logo" />
         <span>Windblock</span>
-      </div>
+      </a>
       <nav class="links">
         <a class="under" href="/">Home</a>
         <a class="under" href="/support/">Support</a>
@@ -77,7 +77,7 @@
       <div class="muted">Effective date: Jun 22, 2026</div>
 
       <h2>Overview</h2>
-      <p>Windblock is a Google Calendar™ add-on that creates and updates calendar events based on public wind forecasts. This policy covers the Windblock add-on and the public website at <a class="under" href="https://windblock.app/">windblock.app</a>.</p>
+      <p>Windblock is operated by <a class="under" href="https://springharborstudios.com/">Spring Harbor Studios</a>, an independent developer based in Madison, Wisconsin. Windblock is a Google Calendar™ add-on that creates and updates calendar events based on public wind forecasts. This policy covers the Windblock add-on and the public website at <a class="under" href="https://windblock.app/">windblock.app</a>.</p>
       <p>The add-on runs on Google Apps Script under your Google account. Windblock does not operate a separate user-account database or export the contents of your calendars to a Windblock server.</p>
 
       <h2>Google Data Access (Scopes &amp; purposes)</h2>
@@ -162,7 +162,7 @@
         <span>•</span>
         <a class="under" href="/support/#contact">Contact</a>
       </div>
-      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock</div>
+      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock · A <a class="under" href="https://springharborstudios.com/">Spring Harbor Studios</a> project</div>
       <div style="margin-top:6px;font-size:12px;color:#8aa1b8">
         Google Calendar™ is a trademark of Google LLC.
       </div>

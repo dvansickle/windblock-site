@@ -29,8 +29,8 @@
   <meta name="twitter:image" content="https://windblock.app/assets/banners/windblock-440x280.png" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="manifest" href="/site.webmanifest">
 
   <style>
@@ -54,7 +54,7 @@
     .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
 
     header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px;color:var(--fg);text-decoration:none}
     .brand img{width:28px;height:28px}
     nav.links{display:flex;gap:12px;flex-wrap:wrap}
     nav a.active{color:#fff;border-bottom:2px solid var(--accent)}
@@ -88,10 +88,10 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
+      <a class="brand" href="/" aria-label="Windblock home">
         <img alt="Windblock logo" src="/assets/icons/windblock-128-white.png" />
         <span>Windblock</span>
-      </div>
+      </a>
       <nav class="links">
         <a class="under js-install" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install</a>
         <a class="under" href="/">Home</a>
@@ -227,7 +227,7 @@
         <span>•</span>
         <a class="under" href="/support/#contact">Contact support</a>
       </div>
-      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock</div>
+      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock · A <a class="under" href="https://springharborstudios.com/">Spring Harbor Studios</a> project</div>
       <div style="margin-top:6px;font-size:12px;color:#8aa1b8">
         Google Calendar™ and Google Workspace™ are trademarks of Google LLC.
       </div>

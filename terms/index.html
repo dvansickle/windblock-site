@@ -13,8 +13,8 @@
   <meta property="og:url" content="https://windblock.app/terms/" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="manifest" href="/site.webmanifest">
 
   <style>
@@ -37,7 +37,7 @@
     a.under{text-decoration:underline}
     .wrap{max-width:1040px;margin:0 auto;padding:28px 20px}
     header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--fg);text-decoration:none}
     .brand img{width:28px;height:28px}
     nav.links{display:flex;gap:12px;flex-wrap:wrap}
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px}
@@ -58,10 +58,10 @@
   <div class="wrap">
     <!-- Header -->
     <header>
-      <div class="brand">
+      <a class="brand" href="/" aria-label="Windblock home">
         <img alt="Windblock" src="/assets/icons/windblock-128-white.png" />
         <span>Windblock</span>
-      </div>
+      </a>
       <nav class="links">
         <a class="under" href="/">Home</a>
         <a class="under" href="/support/">Support</a>
@@ -81,7 +81,7 @@
       </div>
 
       <h2>1) Who we are</h2>
-      <p>Windblock is a Google Calendar™ add-on that helps you reserve time when the wind looks good. It stores your settings in your Google account and uses third-party weather data to create and update events in a dedicated “Windblock” calendar.</p>
+      <p>Windblock is operated by <a class="under" href="https://springharborstudios.com/">Spring Harbor Studios</a>, an independent developer based in Madison, Wisconsin. It is a Google Calendar™ add-on that helps you reserve time when the wind looks good. It stores your settings in your Google account and uses third-party weather data to create and update events in a dedicated “Windblock” calendar.</p>
 
       <h2>2) Acceptance of terms</h2>
       <p>By installing or using Windblock, you agree to these Terms. If you do not agree, please uninstall the add-on and revoke its access in your Google Account settings.</p>
@@ -141,7 +141,7 @@
         <span>•</span>
         <a class="under" href="/support/#contact">Contact</a>
       </div>
-      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock</div>
+      <div style="margin-top:8px;">&copy; <span id="y"></span> Windblock · A <a class="under" href="https://springharborstudios.com/">Spring Harbor Studios</a> project</div>
       <div style="margin-top:6px;font-size:12px;color:#8aa1b8">
         Google Calendar™ is a trademark of Google LLC.
       </div>

@@ -25,8 +25,8 @@
   <meta name="twitter:image" content="https://windblock.app/assets/screenshots/calendar-hero.png">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="manifest" href="/site.webmanifest">
 
   <script type="application/ld+json">
@@ -218,6 +218,13 @@
       font-weight: 800;
     }
     .step p { color: var(--muted); }
+    .section-action {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .section-action span { color: var(--muted); }
 
     .product-layout {
       display: grid;
@@ -357,6 +364,8 @@
       .trust-line { display: grid; }
       .proof-item { padding-left: 0; padding-right: 0; }
       .step { padding-left: 0; padding-right: 0; }
+      .section-action { align-items: stretch; flex-direction: column; }
+      .section-action .button { width: 100%; }
       .final-cta .button { width: 100%; }
     }
   </style>
@@ -430,6 +439,10 @@
             <p>Matching hours appear on a dedicated calendar and disappear again when the forecast changes.</p>
           </div>
         </div>
+        <div class="section-action">
+          <a class="button js-install" data-position="how" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install Windblock free</a>
+          <span>No separate account or subscription.</span>
+        </div>
       </div>
     </section>
 
@@ -501,6 +514,10 @@
             <p>"I like to sail on Thursday evenings and kept getting work calls dropped onto that slot. Now the windy hours are blocked before anyone can book them, so I just show up."</p>
             <footer>Theo K. · Bar Harbor, Maine</footer>
           </blockquote>
+        </div>
+        <div class="section-action">
+          <a class="button js-install" data-position="testimonials" href="https://workspace.google.com/marketplace/app/windblock/316156391256">Install Windblock free</a>
+          <span>Set your conditions in about two minutes.</span>
         </div>
       </div>
     </section>
