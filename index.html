@@ -13,6 +13,7 @@
     gtag('js', new Date());
     gtag('config', 'G-G2HM6ZT030');
   </script>
+  <script src="/assets/posthog.js"></script>
 
   <meta property="og:title" content="Windblock - Protect windy hours from meetings">
   <meta property="og:description" content="A free Google Calendar add-on that automatically protects the forecast windows you care about.">
@@ -610,6 +611,12 @@
         var href = link.getAttribute('href');
         if (typeof gtag === 'function') {
           gtag('event', 'install_click', {
+            position: link.dataset.position || 'unknown',
+            page_path: location.pathname
+          });
+        }
+        if (window.posthog && typeof posthog.capture === 'function') {
+          posthog.capture('install_click', {
             position: link.dataset.position || 'unknown',
             page_path: location.pathname
           });

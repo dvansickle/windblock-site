@@ -14,6 +14,7 @@
     gtag('js', new Date());
     gtag('config', 'G-G2HM6ZT030');
   </script>
+  <script src="/assets/posthog.js"></script>
 
   <!-- Open Graph -->
   <meta property="og:title" content="Changelog — Windblock" />
@@ -249,6 +250,12 @@
       function trackInstallClick(anchor) {
         if (typeof gtag === 'function') {
           gtag('event', 'install_click', {
+            position: positionFor(anchor),
+            page_path: location.pathname
+          });
+        }
+        if (window.posthog && typeof posthog.capture === 'function') {
+          posthog.capture('install_click', {
             position: positionFor(anchor),
             page_path: location.pathname
           });
