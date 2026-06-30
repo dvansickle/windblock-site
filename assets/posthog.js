@@ -4,3 +4,54 @@ posthog.init('phc_nXprFbMJQ3EV9Gq547vjz2CyZvJKhRZVZYuAHX2auNNS', {
   defaults: '2026-05-30',
   person_profiles: 'identified_only'
 });
+
+window.addEventListener('DOMContentLoaded', function () {
+  function linkContext(link) {
+    if (link.classList.contains('brand')) return 'brand';
+    if (link.closest('footer')) return 'footer';
+    if (link.closest('nav')) return 'navigation';
+    if (link.closest('.hero')) return 'hero';
+    if (link.closest('.final-cta')) return 'final_cta';
+    if (link.closest('#how')) return 'how_it_works';
+    if (link.closest('#privacy')) return 'privacy';
+    return 'content';
+  }
+
+  function linkRole(link) {
+    if (link.classList.contains('js-install')) return 'install';
+    if (link.classList.contains('button')) return 'cta';
+    if (link.classList.contains('brand')) return 'brand';
+    if (link.closest('nav')) return 'navigation';
+    if (link.closest('footer')) return 'footer';
+    return 'link';
+  }
+
+  function destinationType(url) {
+    if (url.protocol === 'mailto:') return 'email';
+    if (url.origin !== window.location.origin) return 'outbound';
+    if (url.pathname === window.location.pathname && url.hash) return 'anchor';
+    return 'internal';
+  }
+
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (!window.posthog || typeof posthog.capture !== 'function') return;
+
+      var href = link.getAttribute('href') || '';
+      var url = new URL(href, window.location.href);
+      var text = (link.getAttribute('aria-label') || link.textContent || '').replace(/\s+/g, ' ').trim();
+
+      posthog.capture('site_link_click', {
+        link_text: text || 'unlabeled',
+        link_href: href,
+        link_url: url.href,
+        link_path: url.origin === window.location.origin ? url.pathname + url.hash : null,
+        link_role: linkRole(link),
+        link_context: linkContext(link),
+        destination_type: destinationType(url),
+        position: link.dataset.position || null,
+        page_path: window.location.pathname
+      });
+    });
+  });
+});
